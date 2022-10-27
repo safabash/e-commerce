@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/view/search/search.dart';
 import 'package:flutter/material.dart';
 
 import '../drawer/navigation_drawer.dart';
@@ -11,7 +12,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: NavigationDrawer(),
+      drawer: const NavigationDrawer(),
       appBar: AppBar(
         iconTheme: const IconThemeData(color: Colors.black),
         backgroundColor: Colors.transparent,
@@ -21,7 +22,12 @@ class HomePage extends StatelessWidget {
           Row(
             children: [
               IconButton(
-                  onPressed: (() {}),
+                  onPressed: (() {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const Search()));
+                  }),
                   icon: const Icon(Icons.search, color: Colors.black)),
             ],
           )

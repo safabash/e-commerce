@@ -6,8 +6,10 @@ import '../../../controller/card_provider.dart';
 import '../../constants.dart';
 
 class CartItem extends StatelessWidget {
-  const CartItem({super.key});
-
+  CartItem({super.key, this.title, this.price, this.image});
+  String? title;
+  String? image;
+  String? price;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -22,14 +24,14 @@ class CartItem extends StatelessWidget {
           SizedBox(
             height: 90,
             width: 100,
-            child: Image.asset('asset/images/femaledress.jpeg'),
+            child: Image.asset(image!),
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text(
-                'Blue Dress',
+              Text(
+                title!,
                 style: titleStyleSingleProduct,
               ),
               Text(
@@ -37,18 +39,18 @@ class CartItem extends StatelessWidget {
                 style: fontStyle,
               ),
               Row(
-                children: const [
+                children: [
                   Icon(
                     Icons.currency_rupee_outlined,
                     size: 15,
                   ),
-                  Text('500', style: TextStyle(fontSize: 15))
+                  Text(price!, style: TextStyle(fontSize: 15))
                 ],
               ),
             ],
           ),
           Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               IconButton(
                   onPressed: () {},

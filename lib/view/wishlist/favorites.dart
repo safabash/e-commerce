@@ -27,7 +27,7 @@ class Favorites extends StatelessWidget {
                     topLeft: Radius.circular(35),
                     topRight: Radius.circular(35))),
             child: Column(
-              children: const [
+              children: [
                 CartItem(),
                 CartItem(),
                 CartItem(),

@@ -1,5 +1,7 @@
+import 'package:e_commerce_app/controller/card_provider.dart';
 import 'package:e_commerce_app/view/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'widgets/card_bottom_bar.dart';
 import 'widgets/cart_item.dart';
@@ -17,25 +19,36 @@ class Cart extends StatelessWidget {
           title: AppbarTitle(
             title: 'Cart',
           )),
-      body: ListView(
-        children: [
-          Container(
-            height: 700,
-            padding: const EdgeInsets.only(top: 15),
-            decoration: const BoxDecoration(
-                color: Color.fromARGB(255, 237, 235, 235),
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(35),
-                    topRight: Radius.circular(35))),
-            child: Column(
-              children: const [
-                CartItem(),
-                CartItem(),
-                CartItem(),
-              ],
-            ),
-          )
-        ],
+      body: Consumer<CartProvider>(
+        builder: (context, value, child) {
+          return value.cartList.isEmpty
+              ? Text('Cart is Empty')
+              : ListView.separated(
+                  separatorBuilder: (context, index) {
+                    return Divider();
+                  },
+                  itemCount: value.cartList.length,
+                  itemBuilder: ((context, index) {
+                    final product = value.cartList[index];
+                    return Container(
+                      height: 700,
+                      padding: const EdgeInsets.only(top: 15),
+                      decoration: const BoxDecoration(
+                          color: Color.fromARGB(255, 237, 235, 235),
+                          borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(35),
+                              topRight: Radius.circular(35))),
+                      child: Column(
+                        children: [
+                          CartItem(
+                              price: product.price,
+                              title: product.image,
+                              image: product.image),
+                        ],
+                      ),
+                    );
+                  }));
+        },
       ),
       bottomNavigationBar: const CartBottomBar(),
     );

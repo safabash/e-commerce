@@ -10,7 +10,10 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<SplashProvider>(context, listen: false);
-    provider.gotoLogin(context);
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+      await provider.gotoLogin(context);
+    });
+
     return Scaffold(
       body: Container(
         height: double.infinity,

@@ -1,8 +1,12 @@
 import 'package:e_commerce_app/view/constants.dart';
+import 'package:e_commerce_app/view/delivery_address/delivery_address.dart';
 import 'package:e_commerce_app/view/home/home_page.dart';
+import 'package:e_commerce_app/view/user_profile/user_profile.dart';
 import 'package:e_commerce_app/view/wishlist/favorites.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../../controller/drawer/drawer_controller.dart';
 import '../cart/cart.dart';
 
 class NavigationDrawer extends StatelessWidget {
@@ -24,24 +28,30 @@ class NavigationDrawer extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.only(top: 30),
       child: Column(
-        children: const [
-          CircleAvatar(
-            radius: 100,
-            backgroundImage: AssetImage('asset/images/winx.png'),
+        children: [
+          InkWell(
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const UserProfile()));
+            },
+            child: const CircleAvatar(
+              radius: 100,
+              backgroundImage: AssetImage('asset/images/winx.png'),
+            ),
           ),
           boxheight10,
-          Text(
+          const Text(
             'Safa',
             style: TextStyle(
                 fontFamily: 'Radley', fontSize: 18, color: Colors.white),
           ),
           boxheight10,
-          Text(
+          const Text(
             'safabasheer@gmail.com',
             style: TextStyle(
                 fontFamily: 'Radley', fontSize: 18, color: Colors.white),
           ),
-          SizedBox(height: 50),
+          const SizedBox(height: 50),
         ],
       ),
     );
@@ -90,13 +100,34 @@ class NavigationDrawer extends StatelessWidget {
             color: Colors.white,
           ),
           title: const Text('Delivery Address', style: drawerTitlestyle),
-          onTap: () {},
+          onTap: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const DeliveryAddress()));
+          },
         ),
         const SizedBox(height: 80),
+        Center(
+          child: InkWell(
+            onTap: () {
+              Provider.of<DrawerMenuController>(context, listen: false)
+                  .logOut(context);
+            },
+            child: const Text(
+              'Log Out',
+              style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'Radley'),
+            ),
+          ),
+        ),
         const Center(
           child: Text(
             'v 1.00',
-            style: TextStyle(color: Colors.white, fontSize: 10),
+            style: TextStyle(fontSize: 10, color: Colors.white),
           ),
         )
       ],

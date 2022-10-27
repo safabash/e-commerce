@@ -60,3 +60,10 @@ class Button extends StatelessWidget {
     );
   }
 }
+
+//toast
+String? showToast(context, String text) {
+  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+    content: Text(text),
+  ));
+}
