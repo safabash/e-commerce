@@ -2,7 +2,8 @@ import 'package:e_commerce_app/view/search/search.dart';
 import 'package:flutter/material.dart';
 
 import '../drawer/navigation_drawer.dart';
-import '../widgets.dart';
+
+import '../widgets/appbar_title.dart';
 import 'widgets/dress_category_button.dart';
 import 'widgets/product_card.dart';
 

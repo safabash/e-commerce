@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 
 //api Url
-const baseUrl = 'http://172.16.3.169:6000/api/v1';
-const loginUrl = '/login';
-const registerUrl = '/register';
-const otpUrl = '/verifyOtp';
 
 //
 

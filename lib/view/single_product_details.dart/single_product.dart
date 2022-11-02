@@ -1,9 +1,9 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:e_commerce_app/view/constants.dart';
 
-import 'package:e_commerce_app/view/widgets.dart';
 import 'package:flutter/material.dart';
 
+import '../widgets/submit_button.dart';
 import 'widgets/color_dot.dart';
 import 'widgets/size_button.dart';
 
@@ -16,12 +16,21 @@ class SingleProduct extends StatelessWidget {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
+        leading: IconButton(
+          icon: const Icon(
+            Icons.arrow_back_ios,
+            color: Colors.black,
+          ),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
         actions: [
           CircleAvatar(
               backgroundColor: const Color.fromARGB(255, 229, 233, 235),
               child: IconButton(
                   onPressed: (() {}),
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.favorite,
                     color: kcolor,
                   )))
@@ -88,7 +97,7 @@ class SingleProduct extends StatelessWidget {
                     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent non laoreet lacus. Sed vitae ligula eu tortor condimentum viverra. Curabitur quis enim nulla. Pellentesque vitae leo augue. Duis in fringilla augue. Mauris id mauris auctor.',
                     style: TextStyle(fontFamily: 'Radley', fontSize: 16),
                   ),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 10),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -144,12 +153,21 @@ class SingleProduct extends StatelessWidget {
                       )
                     ],
                   ),
-                  const SizedBox(height: 40),
+                  const SizedBox(height: 25),
                   Center(
-                      child: Button(
-                    text: 'Add to Cart',
-                    onPressed: () {},
-                  ))
+                      child: Column(
+                    children: [
+                      Button(
+                        text: 'Add to Cart',
+                        onPressed: () {},
+                      ),
+                      boxheight20,
+                      Button(
+                        text: 'Check Out',
+                        onPressed: () {},
+                      ),
+                    ],
+                  )),
                 ],
               ),
             ),

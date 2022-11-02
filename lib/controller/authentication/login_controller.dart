@@ -2,7 +2,10 @@ import 'dart:developer';
 
 import 'package:e_commerce_app/model/authentication/log_in_model.dart';
 import 'package:e_commerce_app/service/authentication/sign_in_service.dart';
+import 'package:e_commerce_app/view/authentication/forget_password.dart';
 import 'package:flutter/material.dart';
+
+import '../../view/home/home_page.dart';
 
 class LogInController extends ChangeNotifier {
   TextEditingController emailController = TextEditingController();
@@ -42,14 +45,25 @@ class LogInController extends ChangeNotifier {
         password: passwordController.text,
       );
       log('wone');
-      await SignInService()
-          .signInServide(model, context)
-          .then((value) => disposeTextfields());
-
+      await SignInService().signInServide(model, context).then((value) {
+        if (value != null) {
+          Navigator.of(context).pushAndRemoveUntil(
+              MaterialPageRoute(
+                builder: (context) => const HomePage(),
+              ),
+              (route) => false);
+        }
+        disposeTextfields();
+      });
       isLoading = false;
 
       notifyListeners();
     }
+  }
+
+  void navigateToForgetPassword(context) {
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (context) => const ForgetPassword()));
   }
 
   void disposeTextfields() {

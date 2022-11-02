@@ -4,11 +4,16 @@ import 'package:e_commerce_app/view/authentication/sign_up.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../widgets.dart';
+import '../widgets/submit_button.dart';
 
-class LogIn extends StatelessWidget {
+class LogIn extends StatefulWidget {
   const LogIn({super.key});
 
+  @override
+  State<LogIn> createState() => _LogInState();
+}
+
+class _LogInState extends State<LogIn> {
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
@@ -85,14 +90,19 @@ class LogIn extends StatelessWidget {
                   boxheight10,
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
-                    children: const [
-                      Text(
-                        'forgot password?',
-                        textAlign: TextAlign.right,
-                        style: TextStyle(
-                            fontFamily: "Radley",
-                            color: Color.fromARGB(255, 234, 176, 30),
-                            fontSize: 17),
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          provider.navigateToForgetPassword(context);
+                        },
+                        child: const Text(
+                          'forgot password?',
+                          textAlign: TextAlign.right,
+                          style: TextStyle(
+                              fontFamily: "Radley",
+                              color: Color.fromARGB(255, 234, 176, 30),
+                              fontSize: 17),
+                        ),
                       ),
                     ],
                   ),

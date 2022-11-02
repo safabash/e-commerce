@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:e_commerce_app/model/authentication/signup_model.dart';
 import 'package:e_commerce_app/service/authentication/sign_up_api.dart';
 import 'package:e_commerce_app/view/authentication/otp.dart';
@@ -19,7 +17,17 @@ class SignUpController with ChangeNotifier {
           email: emailController.text,
           phone: phoneController.text,
           password: passwordController.text);
-      await SignUpService.registerUser(user, context, phoneController.text);
+      await SignUpService.registerUser(user, context, phoneController.text)
+          .then((value) {
+        if (value != null) {
+          Navigator.of(context).pushAndRemoveUntil(
+              MaterialPageRoute(
+                builder: (context) =>
+                    OtpPage(otpNumber: phoneController.toString()),
+              ),
+              (route) => false);
+        }
+      });
     }
   }
 

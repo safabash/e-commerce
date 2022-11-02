@@ -1,6 +1,6 @@
 class OtpModel {
-  OtpModel({this.code, this.username, this.email, this.password, this.phone});
-  String? code;
+  OtpModel({this.username, this.email, this.password, this.phone});
+
   String? username;
   String? email;
   String? phone;
@@ -10,6 +10,13 @@ class OtpModel {
         'email': email,
         'phone': phone,
         'password': password,
-        'code': code
       };
+  factory OtpModel.fromJson(Map<String, dynamic> json) {
+    return OtpModel(
+      username: json['email'] ?? '',
+      password: json['password'] ?? '',
+      phone: json['phone'] ?? '',
+      email: json['email'] ?? '',
+    );
+  }
 }

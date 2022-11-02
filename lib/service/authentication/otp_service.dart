@@ -2,36 +2,41 @@ import 'dart:developer';
 
 import 'package:dio/dio.dart';
 import 'package:e_commerce_app/model/authentication/otp_model.dart';
-import 'package:e_commerce_app/view/home/home_page.dart';
-import 'package:e_commerce_app/view/widgets.dart';
-import 'package:flutter/material.dart';
+import 'package:e_commerce_app/service/exceptions/api_exceptions.dart';
+
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
-import '../../view/constants.dart';
+import '../api_end_points/api_end_points.dart';
 
 class OtpService {
-  static Future<void> signUpOtpService(
-      OtpModel model, bool isLoading, context) async {
+  static Future<OtpModel?> signUpOtpService(
+    OtpModel model,
+    bool isLoading,
+    context,
+    String code,
+  ) async {
     final dio = Dio();
+    OtpModel responseModel;
+
     try {
       isLoading = true;
-      final response = await dio.post(baseUrl + otpUrl, data: model.toJson());
-
+      final response =
+          await dio.post(ApiEndPoints.baseUrl + ApiEndPoints.otpUrl, data: {
+        "user": model.toJson(),
+        "code": code,
+      });
       if (response.statusCode! >= 200 && response.statusCode! <= 299) {
         const storage = FlutterSecureStorage();
         await storage.write(key: 'token', value: response.data!['token']);
         final token = await storage.read(key: 'token');
         log(token.toString());
-        showToast(context, 'Created Successfully');
-        Navigator.of(context).pushAndRemoveUntil(
-            MaterialPageRoute(
-              builder: (context) => const HomePage(),
-            ),
-            (route) => false);
+        responseModel = OtpModel.fromJson(response.data);
+        return responseModel;
       }
     } on DioError catch (e) {
+      AppException.handleError(e, context);
       isLoading = false;
-      return e.response!.data;
     }
+    return null;
   }
 }

@@ -59,7 +59,7 @@ class NavigationDrawer extends StatelessWidget {
 
   Widget buildMenuItems(BuildContext context) {
     return Wrap(
-      runSpacing: 16,
+      runSpacing: 5,
       children: [
         ListTile(
           leading: const Icon(
@@ -107,23 +107,18 @@ class NavigationDrawer extends StatelessWidget {
                     builder: (context) => const DeliveryAddress()));
           },
         ),
-        const SizedBox(height: 80),
-        Center(
-          child: InkWell(
-            onTap: () {
-              Provider.of<DrawerMenuController>(context, listen: false)
-                  .logOut(context);
-            },
-            child: const Text(
-              'Log Out',
-              style: TextStyle(
-                  fontSize: 16,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'Radley'),
-            ),
+        ListTile(
+          leading: const Icon(
+            Icons.logout,
+            color: Colors.white,
           ),
+          title: const Text('Log Out', style: drawerTitlestyle),
+          onTap: () {
+            Provider.of<DrawerMenuController>(context, listen: false)
+                .logOut(context);
+          },
         ),
+        const SizedBox(height: 150),
         const Center(
           child: Text(
             'v 1.00',

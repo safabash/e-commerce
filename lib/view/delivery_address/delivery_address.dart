@@ -1,10 +1,9 @@
 import 'package:e_commerce_app/view/constants.dart';
 import 'package:e_commerce_app/view/delivery_address/add_address.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
-import '../widgets.dart';
+import '../widgets/appbar_title.dart';
+import '../widgets/submit_button.dart';
 
 class DeliveryAddress extends StatelessWidget {
   const DeliveryAddress({super.key});
@@ -42,13 +41,13 @@ class DeliveryAddress extends StatelessWidget {
                         'Safa Basheer\n',
                         style: TextStyle(fontFamily: 'Radley'),
                       ),
-                      subtitle: Text(
+                      subtitle: const Text(
                         "987654321\nkakkad(p.o),Malappuram\nKerala, Pin:676323",
                         style: fontStyle,
                       ),
                       trailing: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
+                        children: const [
                           Icon(
                             Icons.delete,
                             color: kcolor,

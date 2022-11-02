@@ -9,4 +9,10 @@ class LogInModel {
         "email": username,
         "password": password,
       };
+  factory LogInModel.fromJson(Map<String, dynamic> json) {
+    return LogInModel(
+      username: json['email'],
+      password: json['password'],
+    );
+  }
 }

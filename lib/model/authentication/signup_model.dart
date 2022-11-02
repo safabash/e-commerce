@@ -16,4 +16,11 @@ class SignUpUserModel {
         'password': password,
         'phone': phone
       };
+  factory SignUpUserModel.fromJson(Map<String, dynamic> json) {
+    return SignUpUserModel(
+        username: json['email'],
+        password: json['password'],
+        phone: json['phone'],
+        email: json['email']);
+  }
 }

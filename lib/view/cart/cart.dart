@@ -1,8 +1,9 @@
 import 'package:e_commerce_app/controller/card_provider.dart';
-import 'package:e_commerce_app/view/widgets.dart';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../widgets/appbar_title.dart';
 import 'widgets/card_bottom_bar.dart';
 import 'widgets/cart_item.dart';
 

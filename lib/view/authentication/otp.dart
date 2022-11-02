@@ -2,13 +2,15 @@ import 'package:e_commerce_app/controller/authentication/otp_controller.dart';
 import 'package:e_commerce_app/controller/authentication/sign_up_controller.dart';
 import 'package:e_commerce_app/model/authentication/signup_model.dart';
 import 'package:e_commerce_app/view/constants.dart';
-import 'package:e_commerce_app/view/widgets.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 
 import 'package:otp_text_field/otp_field.dart';
-import 'package:otp_text_field/style.dart';
+
 import 'package:provider/provider.dart';
+
+import '../widgets/submit_button.dart';
 
 class OtpPage extends StatefulWidget {
   OtpPage({super.key, required this.otpNumber});
@@ -38,8 +40,6 @@ class _OtpPageState extends State<OtpPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text("Otp has been send to ${widget.otpNumber}"),
-            boxheight20,
             Center(
               child: OtpTextField(
                 numberOfFields: 4,

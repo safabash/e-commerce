@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import '../cart/widgets/card_bottom_bar.dart';
 import '../cart/widgets/cart_item.dart';
-import '../widgets.dart';
+
+import '../widgets/appbar_title.dart';
 
 class Favorites extends StatelessWidget {
   const Favorites({super.key});

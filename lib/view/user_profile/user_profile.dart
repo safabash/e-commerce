@@ -1,9 +1,10 @@
 import 'package:e_commerce_app/view/constants.dart';
 import 'package:e_commerce_app/view/user_profile/edit_user_name_profile.dart';
 import 'package:e_commerce_app/view/user_profile/edit_user_number.dart';
-import 'package:e_commerce_app/view/widgets.dart';
 
 import 'package:flutter/material.dart';
+
+import '../widgets/appbar_title.dart';
 
 class UserProfile extends StatelessWidget {
   const UserProfile({super.key});
@@ -33,11 +34,12 @@ class UserProfile extends StatelessWidget {
             children: [
               Stack(
                 alignment: AlignmentDirectional.bottomEnd,
-                children: [
-                  const CircleAvatar(
+                children: const [
+                  CircleAvatar(
                     backgroundColor: Colors.grey,
                     radius: 100,
                   ),
+                  // ignore: prefer_const_constructors
                   Icon(Icons.photo_camera, size: 45, color: kcolor)
                 ],
               ),

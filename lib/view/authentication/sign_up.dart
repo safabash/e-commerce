@@ -1,8 +1,10 @@
 import 'package:e_commerce_app/controller/authentication/sign_up_controller.dart';
-import 'package:e_commerce_app/view/widgets.dart';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../widgets/submit_button.dart';
+import '../widgets/title_text.dart';
 import 'login.dart';
 
 class SignUp extends StatelessWidget {

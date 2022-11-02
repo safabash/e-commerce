@@ -1,7 +1,8 @@
 import 'package:e_commerce_app/view/constants.dart';
 import 'package:flutter/material.dart';
 
-import '../widgets.dart';
+import '../widgets/appbar_title.dart';
+import '../widgets/submit_button.dart';
 
 class AddAddress extends StatelessWidget {
   const AddAddress({super.key});
@@ -29,34 +30,34 @@ class AddAddress extends StatelessWidget {
         child: Column(
           children: [
             TextFormField(
-              decoration: InputDecoration(
-                  border: const OutlineInputBorder(
+              decoration: const InputDecoration(
+                  border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(20))),
-                  fillColor: const Color.fromARGB(255, 223, 220, 220),
+                  fillColor: Color.fromARGB(255, 223, 220, 220),
                   filled: true,
-                  label: const Text('Full name'),
+                  label: Text('Full name'),
                   labelStyle: fontStyle),
             ),
             boxheight20,
             TextFormField(
-              decoration: InputDecoration(
-                  border: const OutlineInputBorder(
+              decoration: const InputDecoration(
+                  border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(20))),
-                  fillColor: const Color.fromARGB(255, 223, 220, 220),
+                  fillColor: Color.fromARGB(255, 223, 220, 220),
                   filled: true,
-                  label: const Text('Pincode'),
+                  label: Text('Pincode'),
                   labelStyle: fontStyle),
             ),
             boxheight20,
             TextFormField(
               maxLines: 5,
               minLines: 3,
-              decoration: InputDecoration(
-                  border: const OutlineInputBorder(
+              decoration: const InputDecoration(
+                  border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(20))),
-                  fillColor: const Color.fromARGB(255, 223, 220, 220),
+                  fillColor: Color.fromARGB(255, 223, 220, 220),
                   filled: true,
-                  label: const Text('Address'),
+                  label: Text('Address'),
                   labelStyle: fontStyle),
             ),
             boxheight20,
@@ -65,13 +66,13 @@ class AddAddress extends StatelessWidget {
                 SizedBox(
                   width: 180,
                   child: TextFormField(
-                    decoration: InputDecoration(
-                        border: const OutlineInputBorder(
+                    decoration: const InputDecoration(
+                        border: OutlineInputBorder(
                             borderRadius:
                                 BorderRadius.all(Radius.circular(16))),
-                        fillColor: const Color.fromARGB(255, 223, 220, 220),
+                        fillColor: Color.fromARGB(255, 223, 220, 220),
                         filled: true,
-                        label: const Text('City'),
+                        label: Text('City'),
                         labelStyle: fontStyle),
                   ),
                 ),
@@ -79,13 +80,13 @@ class AddAddress extends StatelessWidget {
                 SizedBox(
                   width: 180,
                   child: TextFormField(
-                    decoration: InputDecoration(
-                        border: const OutlineInputBorder(
+                    decoration: const InputDecoration(
+                        border: OutlineInputBorder(
                             borderRadius:
                                 BorderRadius.all(Radius.circular(16))),
-                        fillColor: const Color.fromARGB(255, 223, 220, 220),
+                        fillColor: Color.fromARGB(255, 223, 220, 220),
                         filled: true,
-                        label: const Text('State'),
+                        label: Text('State'),
                         labelStyle: fontStyle),
                   ),
                 )
@@ -93,12 +94,12 @@ class AddAddress extends StatelessWidget {
             ),
             boxheight20,
             TextFormField(
-              decoration: InputDecoration(
-                  border: const OutlineInputBorder(
+              decoration: const InputDecoration(
+                  border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(20))),
-                  fillColor: const Color.fromARGB(255, 223, 220, 220),
+                  fillColor: Color.fromARGB(255, 223, 220, 220),
                   filled: true,
-                  label: const Text('Mobile'),
+                  label: Text('Mobile'),
                   labelStyle: fontStyle),
             ),
             const SizedBox(height: 140),

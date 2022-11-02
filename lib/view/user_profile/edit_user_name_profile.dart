@@ -1,6 +1,8 @@
 import 'package:e_commerce_app/view/constants.dart';
-import 'package:e_commerce_app/view/widgets.dart';
+
 import 'package:flutter/material.dart';
+
+import '../widgets/submit_button.dart';
 
 class EditUserNameProfile extends StatelessWidget {
   const EditUserNameProfile({super.key});
