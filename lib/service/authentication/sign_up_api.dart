@@ -1,9 +1,9 @@
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
-import 'package:e_commerce_app/service/exceptions/api_exceptions.dart';
-
-import '../api_end_points/api_end_points.dart';
+import 'package:e_commerce_app/core/api/api_base_url.dart';
+import 'package:e_commerce_app/core/api/api_end_points.dart';
+import '../../../utils/exceptions/api_exceptions.dart';
 import '../../model/authentication/signup_model.dart';
 
 class SignUpService {
@@ -13,7 +13,7 @@ class SignUpService {
     SignUpUserModel responseModel;
     try {
       final response = await dio.post(
-          ApiEndPoints.baseUrl + ApiEndPoints.registerUrl,
+          ApiBaseUrl.baseUrl + ApiEndPoints.registerUrl,
           data: model.toJson());
       if (response.statusCode! >= 200 && response.statusCode! <= 299) {
         log(response.data.toString());
@@ -24,5 +24,6 @@ class SignUpService {
       AppException.handleError(e, context);
       log(e.toString());
     }
+    return null;
   }
 }

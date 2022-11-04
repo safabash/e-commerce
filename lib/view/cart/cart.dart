@@ -1,4 +1,4 @@
-import 'package:e_commerce_app/controller/card_provider.dart';
+import 'package:e_commerce_app/controller/cart/cart_provider.dart';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

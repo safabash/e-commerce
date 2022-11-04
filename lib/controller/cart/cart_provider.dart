@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../model/authentication/product_model.dart';
+import '../../model/authentication/product_model.dart';
 
 class CartProvider with ChangeNotifier {
   int itemcount = 1;

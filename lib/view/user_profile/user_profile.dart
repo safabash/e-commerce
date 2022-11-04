@@ -1,4 +1,4 @@
-import 'package:e_commerce_app/view/constants.dart';
+import 'package:e_commerce_app/helpers/constants.dart';
 import 'package:e_commerce_app/view/user_profile/edit_user_name_profile.dart';
 import 'package:e_commerce_app/view/user_profile/edit_user_number.dart';
 

@@ -3,6 +3,8 @@ import 'package:e_commerce_app/service/authentication/sign_up_api.dart';
 import 'package:e_commerce_app/view/authentication/otp.dart';
 import 'package:flutter/material.dart';
 
+import '../../model/authentication/otp_enum_model.dart';
+
 class SignUpController with ChangeNotifier {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
@@ -22,8 +24,10 @@ class SignUpController with ChangeNotifier {
         if (value != null) {
           Navigator.of(context).pushAndRemoveUntil(
               MaterialPageRoute(
-                builder: (context) =>
-                    OtpPage(otpNumber: phoneController.toString()),
+                builder: (context) => OtpPage(
+                  otpNumber: phoneController.toString(),
+                  type: ActionType.register,
+                ),
               ),
               (route) => false);
         }
@@ -87,6 +91,7 @@ class SignUpController with ChangeNotifier {
         context,
         MaterialPageRoute(
             builder: (context) => OtpPage(
+                  type: ActionType.register,
                   otpNumber: phoneController.text,
                 )));
   }

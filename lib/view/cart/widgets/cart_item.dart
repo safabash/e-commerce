@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../controller/card_provider.dart';
-import '../../constants.dart';
+import '../../../controller/cart/cart_provider.dart';
+import '../../../helpers/constants.dart';
 
 class CartItem extends StatelessWidget {
   CartItem({super.key, this.title, this.price, this.image});

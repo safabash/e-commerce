@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:e_commerce_app/model/authentication/log_in_model.dart';
 import 'package:e_commerce_app/service/authentication/sign_in_service.dart';
-import 'package:e_commerce_app/view/authentication/forget_password.dart';
+import 'package:e_commerce_app/view/authentication/forget_password/forget_password.dart';
 import 'package:flutter/material.dart';
 
 import '../../view/home/home_page.dart';
@@ -63,7 +63,7 @@ class LogInController extends ChangeNotifier {
 
   void navigateToForgetPassword(context) {
     Navigator.of(context)
-        .push(MaterialPageRoute(builder: (context) => const ForgetPassword()));
+        .push(MaterialPageRoute(builder: (context) => ForgetPassword()));
   }
 
   void disposeTextfields() {

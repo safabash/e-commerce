@@ -2,7 +2,7 @@ import 'package:e_commerce_app/view/authentication/login.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../controller/splash_provider.dart';
+import '../../controller/splash/splash_provider.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});

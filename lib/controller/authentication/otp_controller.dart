@@ -1,8 +1,11 @@
 import 'dart:async';
 
+import 'package:e_commerce_app/model/authentication/forgot_password/verify_forgot_password_model.dart';
+import 'package:e_commerce_app/model/authentication/otp_enum_model.dart';
 import 'package:e_commerce_app/model/authentication/otp_model.dart';
 import 'package:e_commerce_app/model/authentication/signup_model.dart';
 import 'package:e_commerce_app/service/authentication/otp_service.dart';
+import 'package:e_commerce_app/view/authentication/forget_password/reset_password.dart';
 
 import 'package:flutter/material.dart';
 
@@ -14,7 +17,7 @@ class OtpController with ChangeNotifier {
   int timeRemaining = 30;
   Timer? timer;
   bool enableResend = false;
-  String code = '';
+  static String code = '';
   void setCode(String newCode) {
     code = newCode;
     notifyListeners();
@@ -26,10 +29,22 @@ class OtpController with ChangeNotifier {
     notifyListeners();
   }
 
-  void submitOtp(context, SignUpUserModel model) async {
+  void submitOtp(context, SignUpUserModel model, ActionType otpAction,
+      VerifyForgetModel verifyForgetModel) async {
     if (code.length != 4) {
-      AppPopUp.showToast(context, 'Enter OTP');
-    } else {
+      AppPopUp.showToast(context, 'Enter OTP', Colors.red);
+      return;
+    }
+    if (otpAction == ActionType.forgetPassword) {
+      OtpService.verifyForgotPasswordOtp(verifyForgetModel, context)
+          .then((value) {
+        if (value == "OTP verification success") {
+          Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => ResetPassword(),
+          ));
+        }
+      });
+    } else if (otpAction == ActionType.register) {
       final verifyOtp = OtpModel(
           email: model.email,
           password: model.password,

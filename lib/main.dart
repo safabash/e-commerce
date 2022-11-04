@@ -1,12 +1,14 @@
+import 'package:e_commerce_app/controller/authentication/forget_password/forget_password_controller.dart';
+import 'package:e_commerce_app/controller/authentication/forget_password/reset_password_controller.dart';
 import 'package:e_commerce_app/controller/authentication/login_controller.dart';
 import 'package:e_commerce_app/controller/authentication/otp_controller.dart';
 import 'package:e_commerce_app/controller/authentication/sign_up_controller.dart';
-import 'package:e_commerce_app/controller/splash_provider.dart';
-import 'package:e_commerce_app/view/splash.dart';
+import 'package:e_commerce_app/controller/splash/splash_provider.dart';
+import 'package:e_commerce_app/view/splash/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'controller/card_provider.dart';
+import 'controller/cart/cart_provider.dart';
 import 'controller/drawer/drawer_controller.dart';
 
 void main() {
@@ -18,6 +20,9 @@ void main() {
     ChangeNotifierProvider<LogInController>(create: (_) => LogInController()),
     ChangeNotifierProvider<CartProvider>(create: (_) => CartProvider()),
     ChangeNotifierProvider<OtpController>(create: (_) => OtpController()),
+    ChangeNotifierProvider<ForgetPasswordController>(
+        create: (_) => ForgetPasswordController()),
+    ChangeNotifierProvider<ResetController>(create: (_) => ResetController()),
   ], child: const MyApp()));
 }
 
