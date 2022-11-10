@@ -33,7 +33,7 @@ class CartBottomBar extends StatelessWidget {
               ],
             ),
             Button(
-              text: 'Add to Cart',
+              text: 'Check Out',
               onPressed: (() {}),
             )
           ],

@@ -40,7 +40,7 @@ class OtpController with ChangeNotifier {
           .then((value) {
         if (value == "OTP verification success") {
           Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => ResetPassword(),
+            builder: (context) => const ResetPassword(),
           ));
         }
       });

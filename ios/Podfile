@@ -9,6 +9,9 @@ project 'Runner', {
   'Profile' => :release,
   'Release' => :release,
 }
+# installer.pods_project.build_configurations.each do |config|
+#   config.build_settings["EXCLUDED_ARCHS[sdk=iphonesimulator*]"] = "arm64"
+# end
 
 def flutter_root
   generated_xcode_build_settings_path = File.expand_path(File.join('..', 'Flutter', 'Generated.xcconfig'), __FILE__)
@@ -35,6 +38,9 @@ target 'Runner' do
 end
 
 post_install do |installer|
+  installer.pods_project.build_configurations.each do |config|
+    config.build_settings["EXCLUDED_ARCHS[sdk=iphonesimulator*]"] = "arm64"
+  end
   installer.pods_project.targets.each do |target|
     flutter_additional_ios_build_settings(target)
   end

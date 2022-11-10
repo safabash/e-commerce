@@ -1,7 +1,9 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:e_commerce_app/controller/single_product_controller/single_product_controller.dart';
 import 'package:e_commerce_app/helpers/constants.dart';
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../widgets/submit_button.dart';
 import 'widgets/color_dot.dart';
@@ -12,6 +14,8 @@ class SingleProduct extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final provider =
+        Provider.of<SingleProductController>(context, listen: false);
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -92,7 +96,7 @@ class SingleProduct extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 15),
+                  const SizedBox(height: 10),
                   const Text(
                     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent non laoreet lacus. Sed vitae ligula eu tortor condimentum viverra. Curabitur quis enim nulla. Pellentesque vitae leo augue. Duis in fringilla augue. Mauris id mauris auctor.',
                     style: TextStyle(fontFamily: 'Radley', fontSize: 16),
@@ -137,7 +141,9 @@ class SingleProduct extends StatelessWidget {
                             style:
                                 TextStyle(fontFamily: 'Radley', fontSize: 19),
                           ),
-                          boxheight10,
+                          const SizedBox(
+                            height: 5,
+                          ),
                           Row(
                             children: [
                               SizeButton(size: 'S'),
@@ -153,18 +159,22 @@ class SingleProduct extends StatelessWidget {
                       )
                     ],
                   ),
-                  const SizedBox(height: 25),
+                  const SizedBox(height: 10),
                   Center(
                       child: Column(
                     children: [
                       Button(
                         text: 'Add to Cart',
-                        onPressed: () {},
+                        onPressed: () {
+                          provider.goToCart(context);
+                        },
                       ),
                       boxheight20,
                       Button(
                         text: 'Check Out',
-                        onPressed: () {},
+                        onPressed: () {
+                          provider.goToPayment(context);
+                        },
                       ),
                     ],
                   )),

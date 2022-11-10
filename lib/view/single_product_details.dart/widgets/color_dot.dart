@@ -20,7 +20,7 @@ class Colordot extends StatelessWidget {
                 Border.all(color: isActive ? Colors.black : Colors.transparent),
             shape: BoxShape.circle),
         child: Padding(
-          padding: EdgeInsets.all(3.0),
+          padding: const EdgeInsets.all(3.0),
           child: CircleAvatar(
             radius: 10,
             backgroundColor: color,

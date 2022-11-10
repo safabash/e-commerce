@@ -1,7 +1,5 @@
 import 'package:e_commerce_app/helpers/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 class Search extends StatelessWidget {
   const Search({super.key});

@@ -1,4 +1,3 @@
-import 'package:e_commerce_app/helpers/constants.dart';
 import 'package:flutter/material.dart';
 
 import '../../single_product_details.dart/single_product.dart';
@@ -27,10 +26,10 @@ class ProductCard extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(left: 110),
                   child: CircleAvatar(
-                      backgroundColor: Color.fromARGB(255, 229, 233, 235),
+                      backgroundColor: const Color.fromARGB(255, 229, 233, 235),
                       child: IconButton(
                           onPressed: (() {}),
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.favorite,
                             color: Colors.red,
                           ))),

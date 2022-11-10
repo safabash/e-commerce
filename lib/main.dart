@@ -3,6 +3,9 @@ import 'package:e_commerce_app/controller/authentication/forget_password/reset_p
 import 'package:e_commerce_app/controller/authentication/login_controller.dart';
 import 'package:e_commerce_app/controller/authentication/otp_controller.dart';
 import 'package:e_commerce_app/controller/authentication/sign_up_controller.dart';
+import 'package:e_commerce_app/controller/home/home_controller.dart';
+import 'package:e_commerce_app/controller/payment/razor_pay_controller.dart';
+import 'package:e_commerce_app/controller/single_product_controller/single_product_controller.dart';
 import 'package:e_commerce_app/controller/splash/splash_provider.dart';
 import 'package:e_commerce_app/view/splash/splash.dart';
 import 'package:flutter/material.dart';
@@ -12,18 +15,31 @@ import 'controller/cart/cart_provider.dart';
 import 'controller/drawer/drawer_controller.dart';
 
 void main() {
-  runApp(MultiProvider(providers: [
-    ChangeNotifierProvider<SplashProvider>(create: (_) => SplashProvider()),
-    ChangeNotifierProvider<SignUpController>(create: (_) => SignUpController()),
-    ChangeNotifierProvider<DrawerMenuController>(
-        create: (_) => DrawerMenuController()),
-    ChangeNotifierProvider<LogInController>(create: (_) => LogInController()),
-    ChangeNotifierProvider<CartProvider>(create: (_) => CartProvider()),
-    ChangeNotifierProvider<OtpController>(create: (_) => OtpController()),
-    ChangeNotifierProvider<ForgetPasswordController>(
-        create: (_) => ForgetPasswordController()),
-    ChangeNotifierProvider<ResetController>(create: (_) => ResetController()),
-  ], child: const MyApp()));
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider<SplashProvider>(create: (_) => SplashProvider()),
+        ChangeNotifierProvider<SignUpController>(
+            create: (_) => SignUpController()),
+        ChangeNotifierProvider<DrawerMenuController>(
+            create: (_) => DrawerMenuController()),
+        ChangeNotifierProvider<LogInController>(
+            create: (_) => LogInController()),
+        ChangeNotifierProvider<CartProvider>(create: (_) => CartProvider()),
+        ChangeNotifierProvider<OtpController>(create: (_) => OtpController()),
+        ChangeNotifierProvider<ForgetPasswordController>(
+            create: (_) => ForgetPasswordController()),
+        ChangeNotifierProvider<ResetController>(
+            create: (_) => ResetController()),
+        ChangeNotifierProvider<HomeController>(create: (_) => HomeController()),
+        ChangeNotifierProvider<SingleProductController>(
+            create: (_) => SingleProductController()),
+        ChangeNotifierProvider<PaymentOptionController>(
+            create: (_) => PaymentOptionController()),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {

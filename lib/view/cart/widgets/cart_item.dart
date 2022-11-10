@@ -34,17 +34,17 @@ class CartItem extends StatelessWidget {
                 title!,
                 style: titleStyleSingleProduct,
               ),
-              Text(
+              const Text(
                 'Size : M',
                 style: fontStyle,
               ),
               Row(
                 children: [
-                  Icon(
+                  const Icon(
                     Icons.currency_rupee_outlined,
                     size: 15,
                   ),
-                  Text(price!, style: TextStyle(fontSize: 15))
+                  Text(price!, style: const TextStyle(fontSize: 15))
                 ],
               ),
             ],

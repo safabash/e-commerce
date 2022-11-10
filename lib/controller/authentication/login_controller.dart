@@ -4,6 +4,7 @@ import 'package:e_commerce_app/model/authentication/log_in_model.dart';
 import 'package:e_commerce_app/service/authentication/sign_in_service.dart';
 import 'package:e_commerce_app/view/authentication/forget_password/forget_password.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../view/home/home_page.dart';
 
@@ -69,5 +70,20 @@ class LogInController extends ChangeNotifier {
   void disposeTextfields() {
     emailController.clear();
     passwordController.clear();
+  }
+
+  void googleLogIn(context) async {
+    isLoading = true;
+    GoogleSignIn googleSignIn = GoogleSignIn();
+    try {
+      final result = await googleSignIn.signIn();
+      isLoading = false;
+      Navigator.of(context)
+          .push(MaterialPageRoute(builder: (context) => const HomePage()));
+      log(result.toString());
+      notifyListeners();
+    } catch (e) {
+      log('e');
+    }
   }
 }

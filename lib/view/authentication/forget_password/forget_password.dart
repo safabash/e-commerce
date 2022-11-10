@@ -30,7 +30,7 @@ class ForgetPassword extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: SafeArea(
-          child: Column(
+          child: ListView(
             children: [
               Lottie.asset('asset/lottie/forgetpassword.json'),
               Form(

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class DressButtonWidget extends StatelessWidget {
-  DressButtonWidget({Key? key, required this.image, required this.text})
+  const DressButtonWidget({Key? key, required this.image, required this.text})
       : super(key: key);
-  String image;
-  String text;
+  final String image;
+  final String text;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -18,7 +18,7 @@ class DressButtonWidget extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: Column(
               children: [
-                Image.asset(
+                Image.network(
                   image,
                   height: 30,
                   width: 30,

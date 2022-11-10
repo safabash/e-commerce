@@ -12,15 +12,18 @@ class SignUpService {
     Dio dio = Dio();
     SignUpUserModel responseModel;
     try {
+      log('first');
       final response = await dio.post(
           ApiBaseUrl.baseUrl + ApiEndPoints.registerUrl,
           data: model.toJson());
+      log(response.statusCode.toString());
       if (response.statusCode! >= 200 && response.statusCode! <= 299) {
         log(response.data.toString());
         responseModel = SignUpUserModel.fromJson(response.data);
         return responseModel;
       }
     } on DioError catch (e) {
+      log('error');
       AppException.handleError(e, context);
       log(e.toString());
     }

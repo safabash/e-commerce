@@ -11,12 +11,12 @@ class ResetPasswordService {
   Future<String?> resetPassword(ResetPasswordModel model, context) async {
     try {
       Dio dio = Dio();
-      print(model.toJson().toString());
+      // print(model.toJson().toString());
       final response = await dio.put(
         ApiBaseUrl.baseUrl + ApiEndPoints.password,
         data: jsonEncode(model.toJson()),
       );
-      print("object");
+      // print("object");
       if (response.statusCode! >= 200 && response.statusCode! <= 299) {
         log(response.data['message']);
         return response.data['message'];

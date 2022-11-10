@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:e_commerce_app/model/authentication/signup_model.dart';
 import 'package:e_commerce_app/service/authentication/sign_up_api.dart';
 import 'package:e_commerce_app/view/authentication/otp.dart';
@@ -13,6 +15,7 @@ class SignUpController with ChangeNotifier {
   TextEditingController nameController = TextEditingController();
   final isLoading = false;
   Future<void> registerUser(context, formKey) async {
+    log('work');
     if (formKey.currentState!.validate()) {
       final user = SignUpUserModel(
           username: nameController.text,

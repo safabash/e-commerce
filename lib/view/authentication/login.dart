@@ -6,20 +6,14 @@ import 'package:provider/provider.dart';
 
 import '../widgets/submit_button.dart';
 
-class LogIn extends StatefulWidget {
-  const LogIn({super.key});
-
-  @override
-  State<LogIn> createState() => _LogInState();
-}
-
-class _LogInState extends State<LogIn> {
+class LogIn extends StatelessWidget {
+  LogIn({super.key});
+  final formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
     final provider = Provider.of<LogInController>(context, listen: false);
-    final formKey = GlobalKey<FormState>();
 
     return Scaffold(
       body: ListView(
@@ -50,9 +44,6 @@ class _LogInState extends State<LogIn> {
                   const SizedBox(
                     height: 85,
                   ),
-                  const SizedBox(
-                    height: 20,
-                  ),
                   TextFormField(
                     controller: provider.emailController,
                     validator: (value) =>
@@ -69,7 +60,7 @@ class _LogInState extends State<LogIn> {
                   Consumer<LogInController>(
                     builder: (context, value, child) {
                       return TextFormField(
-                        obscureText: provider.passwordVisible,
+                        obscureText: false,
                         keyboardType: TextInputType.text,
                         controller: provider.passwordController,
                         validator: (value) => provider.passwordValidator(
@@ -149,9 +140,14 @@ class _LogInState extends State<LogIn> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      CircleAvatar(
-                          radius: 15,
-                          child: Image.asset('asset/images/google.png')),
+                      InkWell(
+                        onTap: () {
+                          provider.googleLogIn(context);
+                        },
+                        child: CircleAvatar(
+                            radius: 15,
+                            child: Image.asset('asset/images/google.png')),
+                      ),
                     ],
                   ),
                   SizedBox(height: height * .04),

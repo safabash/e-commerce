@@ -22,7 +22,7 @@ class SignUp extends StatelessWidget {
           key: formKey,
           child: ListView(
             children: [
-              Center(child: TitleText(text: 'Create account')),
+              const Center(child: TitleText(text: 'Create account')),
               const SizedBox(
                 height: 20,
               ),
@@ -98,8 +98,8 @@ class SignUp extends StatelessWidget {
                       ? const CircularProgressIndicator()
                       : Button(
                           text: 'Create Account',
-                          onPressed: () {
-                            provider.registerUser(context, formKey);
+                          onPressed: () async {
+                            await provider.registerUser(context, formKey);
                           },
                         );
                 },
@@ -116,10 +116,8 @@ class SignUp extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const LogIn()));
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => LogIn()));
                     },
                     child: const Text(
                       'Log In',

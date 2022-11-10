@@ -22,7 +22,7 @@ class ResetController with ChangeNotifier {
       if (value != null) {
         Navigator.of(context).pushAndRemoveUntil(
             MaterialPageRoute(
-              builder: (context) => const LogIn(),
+              builder: (context) => LogIn(),
             ),
             (route) => false);
       } else {

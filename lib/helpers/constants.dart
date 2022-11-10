@@ -28,3 +28,9 @@ List<String> images = [
 const boxw10 = SizedBox(width: 10);
 const boxheight10 = SizedBox(height: 10);
 const boxheight20 = SizedBox(height: 20);
+
+List<String> pagesBanner = [
+  'https://d3k81ch9hvuctc.cloudfront.net/company/RtzSKw/images/6ad4362d-05cd-4128-a66f-99384a5ed591.jpeg',
+  'https://www.littleblackdress.co.uk/media/wysiwyg/DRESSES-FOR-DANCING.jpg',
+  'https://www.littleblackdress.co.uk/media/wysiwyg/Christmas-inspo.jpg'
+];

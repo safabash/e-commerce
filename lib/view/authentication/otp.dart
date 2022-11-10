@@ -15,9 +15,9 @@ import '../../model/authentication/otp_enum_model.dart';
 import '../widgets/submit_button.dart';
 
 class OtpPage extends StatefulWidget {
-  OtpPage({super.key, required this.otpNumber, required this.type});
-  String? otpNumber;
-  ActionType type;
+  const OtpPage({super.key, required this.otpNumber, required this.type});
+  final String? otpNumber;
+  final ActionType type;
   @override
   State<OtpPage> createState() => _OtpPageState();
 }

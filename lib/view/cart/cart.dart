@@ -23,10 +23,10 @@ class Cart extends StatelessWidget {
       body: Consumer<CartProvider>(
         builder: (context, value, child) {
           return value.cartList.isEmpty
-              ? Text('Cart is Empty')
+              ? const Text('Cart is Empty')
               : ListView.separated(
                   separatorBuilder: (context, index) {
-                    return Divider();
+                    return const Divider();
                   },
                   itemCount: value.cartList.length,
                   itemBuilder: ((context, index) {

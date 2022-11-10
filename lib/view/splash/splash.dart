@@ -1,4 +1,3 @@
-import 'package:e_commerce_app/view/authentication/login.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -15,7 +14,7 @@ class SplashScreen extends StatelessWidget {
     });
 
     return Scaffold(
-      body: Container(
+      body: SizedBox(
         height: double.infinity,
         width: double.infinity,
         child: FittedBox(
