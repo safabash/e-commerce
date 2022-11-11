@@ -4,39 +4,49 @@ import 'package:e_commerce_app/service/payment/payment_service.dart';
 import 'package:flutter/material.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 
+import '../../view/widgets/app_pop_up.dart';
+
 class PaymentOptionController with ChangeNotifier {
-  late final razorpay;
   String selectedType = 'online';
+  final razorpay = Razorpay();
+  bool isSuccess = false;
 
   var options = {
-    'key': 'rzp_test_0bHO2vUjKIyk ',
-    'amount': 100,
-    'name': 'Winx cloth',
-
-    'description': 'Fine T-Shirt',
-    'timeout': '5000', // in seconds
+    'key': 'rzp_test_43WHhfpaRYMT5P',
+    'amount': '10000',
+    'name': 'Quick Shope',
+    'description': 'Dresses',
+    'timeout': "300",
     'prefill': {
-      'contact': '9123456789',
-      'email': 'gaurav.kumar@example.com',
+      'contact': '8086686886',
+      'email': 'quickshope@gmail.com',
     }
   };
 
-  void initRazorPay() {
+  void razorPayInitFn() {
     razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS, _handlePaymentSuccess);
     razorpay.on(Razorpay.EVENT_PAYMENT_ERROR, _handlePaymentError);
     razorpay.on(Razorpay.EVENT_EXTERNAL_WALLET, _handleExternalWallet);
   }
 
-  void _handlePaymentSuccess(PaymentSuccessResponse response) {
-    log('success');
+  void _handlePaymentSuccess(PaymentSuccessResponse response, context) {
+    AppPopUp.showToast(
+      context,
+      'Payment Success',
+      Colors.green,
+    );
+
+    isSuccess = true;
+    notifyListeners();
   }
 
-  void _handlePaymentError(PaymentFailureResponse response) {
-    log('failure');
+  void _handlePaymentError(PaymentFailureResponse response, context) {
+    AppPopUp.showToast(context, 'Payment Faild', Colors.red);
+    log('Payment Faild');
   }
 
   void _handleExternalWallet(ExternalWalletResponse response) {
-    log("external");
+    log('Payment ExternalWallet');
   }
 
   void radionButtonChange(String newValue) {

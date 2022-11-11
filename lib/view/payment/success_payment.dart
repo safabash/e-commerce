@@ -1,8 +1,6 @@
-import 'package:e_commerce_app/helpers/constants.dart';
 import 'package:e_commerce_app/view/widgets/submit_button.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+
 import 'package:lottie/lottie.dart';
 
 import 'widgets/payment_status_text.dart';

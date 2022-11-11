@@ -25,8 +25,8 @@ class _PaymentOptionState extends State<PaymentOption> {
   void initState() {
     paymentOptionController =
         Provider.of<PaymentOptionController>(context, listen: false);
-    paymentOptionController.razorpay = Razorpay();
-    paymentOptionController.initRazorPay();
+
+    paymentOptionController.razorPayInitFn();
     super.initState();
   }
 
@@ -62,12 +62,12 @@ class _PaymentOptionState extends State<PaymentOption> {
                           onChanged: ((newValue) {
                             value.radionButtonChange(newValue.toString());
                           })),
-                      title: Text(
+                      title: const Text(
                         'online',
-                        style: const TextStyle(
+                        style: TextStyle(
                             fontFamily: 'Radley', fontWeight: FontWeight.bold),
                       ),
-                      trailing: Icon(
+                      trailing: const Icon(
                         Icons.payment_outlined,
                         color: kcolor,
                       ),
@@ -81,12 +81,12 @@ class _PaymentOptionState extends State<PaymentOption> {
                           onChanged: ((newValue) {
                             value.radionButtonChange(newValue.toString());
                           })),
-                      title: Text(
+                      title: const Text(
                         'cod',
-                        style: const TextStyle(
+                        style: TextStyle(
                             fontFamily: 'Radley', fontWeight: FontWeight.bold),
                       ),
-                      trailing: Icon(
+                      trailing: const Icon(
                         Icons.payment_outlined,
                         color: kcolor,
                       ),
@@ -112,7 +112,7 @@ class _PaymentOptionState extends State<PaymentOption> {
 
   @override
   void dispose() {
-    // paymentOptionController.razorpay.clear();
+    paymentOptionController.razorpay.clear();
     super.dispose();
   }
 }

@@ -1,7 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:e_commerce_app/controller/home/home_controller.dart';
 import 'package:e_commerce_app/helpers/constants.dart';
-import 'package:e_commerce_app/view/home/widgets/tab_text.dart';
+
 import 'package:e_commerce_app/view/search/search.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -45,19 +45,6 @@ class HomePage extends StatelessWidget {
               ],
             )
           ],
-          // bottom: const TabBar(tabs: [
-          //   Tab(
-          //     child: TabText(
-          //       text: 'All',
-          //     ),
-          //   ),
-          //   Tab(
-          //     child: TabText(text: 'Women'),
-          //   ),
-          //   Tab(
-          //     child: TabText(text: 'Men'),
-          //   )
-          // ]),
         ),
         body: SafeArea(
             child: Padding(
@@ -104,14 +91,17 @@ class HomePage extends StatelessWidget {
                 GridView.builder(
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
-                    itemCount: 10,
+                    itemCount: 2,
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
                             childAspectRatio: 0.7,
                             crossAxisCount: 2,
                             mainAxisSpacing: 0,
                             crossAxisSpacing: 0),
-                    itemBuilder: ((context, index) => const ProductCard()))
+                    itemBuilder: ((context, index) => ProductCard(
+                          list: provider.productList,
+                          index: index,
+                        )))
               ],
             ),
           ),

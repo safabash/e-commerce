@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+
 import 'package:lottie/lottie.dart';
 
 import '../widgets/submit_button.dart';
@@ -21,7 +20,7 @@ class FailedPayment extends StatelessWidget {
             PaymentStatusText(
               text: 'Payment Failed',
             ),
-            SizedBox(height: 90),
+            const SizedBox(height: 90),
             Lottie.asset('asset/lottie/failed.json'),
             const SizedBox(height: 140),
             Button(

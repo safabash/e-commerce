@@ -1,14 +1,16 @@
+import 'package:e_commerce_app/model/home/home_product_model.dart';
 import 'package:flutter/material.dart';
 
 import '../../single_product_details.dart/single_product.dart';
 
 class ProductCard extends StatelessWidget {
-  const ProductCard({
-    Key? key,
-  }) : super(key: key);
-
+  ProductCard({Key? key, required this.list, required this.index})
+      : super(key: key);
+  final List<ProductHome> list;
+  int index;
   @override
   Widget build(BuildContext context) {
+    final ProductHome product = list[index];
     return InkWell(
       onTap: () {
         Navigator.push(context,
@@ -40,19 +42,19 @@ class ProductCard extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                'Black dress',
-                style: TextStyle(fontSize: 20, fontFamily: 'Radley'),
+              Text(
+                product.name,
+                style: const TextStyle(fontSize: 20, fontFamily: 'Radley'),
               ),
               Row(
-                children: const [
-                  Icon(
+                children: [
+                  const Icon(
                     Icons.currency_rupee_outlined,
                     color: Colors.grey,
                     size: 17,
                   ),
-                  Text('500',
-                      style: TextStyle(fontSize: 17, color: Colors.grey))
+                  Text(product.price.toString(),
+                      style: const TextStyle(fontSize: 17, color: Colors.grey))
                 ],
               ),
             ],
