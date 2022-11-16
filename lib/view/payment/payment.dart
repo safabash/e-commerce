@@ -1,13 +1,10 @@
 import 'package:e_commerce_app/helpers/constants.dart';
 import 'package:e_commerce_app/controller/payment/razor_pay_controller.dart';
-import 'package:e_commerce_app/service/payment/payment_service.dart';
-import 'package:e_commerce_app/view/payment/failed_payment.dart';
 
 import 'package:e_commerce_app/view/widgets/submit_button.dart';
 import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
-import 'package:razorpay_flutter/razorpay_flutter.dart';
 
 import '../widgets/appbar_title.dart';
 
