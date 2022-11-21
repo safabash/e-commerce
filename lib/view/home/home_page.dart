@@ -19,8 +19,6 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<HomeController>(context, listen: false);
-    WidgetsBinding.instance
-        .addPostFrameCallback((_) => provider.getAllCategories(context));
 
     return DefaultTabController(
       length: 3,
@@ -88,20 +86,27 @@ class HomePage extends StatelessWidget {
                   itemCount: 3,
                 ),
                 const SizedBox(height: 20),
-                GridView.builder(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemCount: 2,
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                            childAspectRatio: 0.7,
-                            crossAxisCount: 2,
-                            mainAxisSpacing: 0,
-                            crossAxisSpacing: 0),
-                    itemBuilder: ((context, index) => ProductCard(
-                          list: provider.productList,
-                          index: index,
-                        )))
+                Consumer<HomeController>(builder: (context, value, child) {
+                  return
+                      // value.isLoading == true
+                      //     ? const Center(
+                      //         child: CircularProgressIndicator(),
+                      //       ):
+                      GridView.builder(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemCount: 2,
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                                  childAspectRatio: 0.7,
+                                  crossAxisCount: 2,
+                                  mainAxisSpacing: 0,
+                                  crossAxisSpacing: 0),
+                          itemBuilder: ((context, index) => ProductCard(
+                                list: value.products?.products ?? [],
+                                index: index,
+                              )));
+                })
               ],
             ),
           ),

@@ -7,7 +7,7 @@ import 'package:e_commerce_app/model/home/home_category_model.dart';
 import 'package:e_commerce_app/utils/exceptions/api_exceptions.dart';
 
 class HomeCategoriesService {
-  static Future<List<HomeCategoryModel>> getAllCategories(context) async {
+  static Future<List<HomeCategoryModel>> getAllCategories() async {
     log('df');
     List<HomeCategoryModel> categoryList = [];
     try {
@@ -28,7 +28,7 @@ class HomeCategoriesService {
       }
     } catch (e) {
       log(e.toString());
-      AppException.handleError(e, context);
+      // AppException.handleError(e, context);
     }
     return <HomeCategoryModel>[];
   }
