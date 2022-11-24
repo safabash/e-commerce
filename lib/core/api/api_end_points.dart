@@ -5,5 +5,5 @@ class ApiEndPoints {
   static const password = '/accounts/password';
   static String fogotOtpverification = '/verifyOtp';
   static const categories = "/admin/categories";
-  static const products = '/products';
+  static const products = '/products/';
 }

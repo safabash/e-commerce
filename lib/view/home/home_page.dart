@@ -87,25 +87,27 @@ class HomePage extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
                 Consumer<HomeController>(builder: (context, value, child) {
-                  return
-                      // value.isLoading == true
-                      //     ? const Center(
-                      //         child: CircularProgressIndicator(),
-                      //       ):
-                      GridView.builder(
-                          shrinkWrap: true,
-                          physics: const NeverScrollableScrollPhysics(),
-                          itemCount: 2,
-                          gridDelegate:
-                              const SliverGridDelegateWithFixedCrossAxisCount(
-                                  childAspectRatio: 0.7,
-                                  crossAxisCount: 2,
-                                  mainAxisSpacing: 0,
-                                  crossAxisSpacing: 0),
-                          itemBuilder: ((context, index) => ProductCard(
-                                list: value.products?.products ?? [],
-                                index: index,
-                              )));
+                  return value.isLoading == true
+                      ? const Center(
+                          child: CircularProgressIndicator(),
+                        )
+                      : value.products == null
+                          ? const Center(
+                              child: CircularProgressIndicator(),
+                            )
+                          : GridView.builder(
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
+                              itemCount: value.products?.products.length,
+                              gridDelegate:
+                                  const SliverGridDelegateWithFixedCrossAxisCount(
+                                      childAspectRatio: 0.7,
+                                      crossAxisCount: 2,
+                                      mainAxisSpacing: 0,
+                                      crossAxisSpacing: 0),
+                              itemBuilder: ((context, index) => ProductCard(
+                                    product: value.products?.products[index],
+                                  )));
                 })
               ],
             ),
