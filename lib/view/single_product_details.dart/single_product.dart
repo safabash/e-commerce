@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:e_commerce_app/controller/cart/cart_provider.dart';
 import 'package:e_commerce_app/controller/single_product_controller/single_product_controller.dart';
 import 'package:e_commerce_app/helpers/constants.dart';
 
@@ -22,6 +23,7 @@ class SingleProduct extends StatelessWidget {
         provider.selectedSize;
       },
     );
+
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -152,10 +154,21 @@ class SingleProduct extends StatelessWidget {
                     Center(
                         child: Column(
                       children: [
-                        Button(
-                          text: 'Add to Cart',
-                          onPressed: () {
-                            provider.goToCart(context);
+                        Consumer<CartProvider>(
+                          builder: (context, value, child) {
+                            return Button(
+                              text: 'Add to Cart',
+                              onPressed: () {
+                                provider.goToCart(context);
+                                value.addProductsToCart(
+                                    provider.productElement!.id!,
+                                    provider.productElement!
+                                        .size![provider.selectedSize],
+                                    provider.productElement!.colors![0].color,
+                                    context);
+                                value.getAllCartProducts(context);
+                              },
+                            );
                           },
                         ),
                         boxheight20,

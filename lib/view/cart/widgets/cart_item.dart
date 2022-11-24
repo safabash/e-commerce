@@ -6,16 +6,17 @@ import '../../../controller/cart/cart_provider.dart';
 import '../../../helpers/constants.dart';
 
 class CartItem extends StatelessWidget {
-  CartItem({super.key, this.title, this.price, this.image});
+  CartItem({super.key, this.title, this.price, this.image, this.size});
   String? title;
+  String? size;
   String? image;
   String? price;
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 110,
-      margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-      padding: const EdgeInsets.all(10),
+      height: 120,
+      margin: const EdgeInsets.only(top: 10, left: 10, right: 10),
+      // padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
           color: Colors.white, borderRadius: BorderRadius.circular(10)),
       child: Row(
@@ -23,31 +24,33 @@ class CartItem extends StatelessWidget {
         children: [
           SizedBox(
             height: 90,
-            width: 100,
-            child: Image.asset(image!),
+            width: 90,
+            child: Image.network(image!),
           ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                title!,
-                style: titleStyleSingleProduct,
-              ),
-              const Text(
-                'Size : M',
-                style: fontStyle,
-              ),
-              Row(
-                children: [
-                  const Icon(
-                    Icons.currency_rupee_outlined,
-                    size: 15,
-                  ),
-                  Text(price!, style: const TextStyle(fontSize: 15))
-                ],
-              ),
-            ],
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  title!,
+                  style: titleStyleSingleProduct,
+                ),
+                Text(
+                  size ?? '',
+                  style: fontStyle,
+                ),
+                Row(
+                  children: [
+                    const Icon(
+                      Icons.currency_rupee_outlined,
+                      size: 15,
+                    ),
+                    Text(price!, style: const TextStyle(fontSize: 15))
+                  ],
+                ),
+              ],
+            ),
           ),
           Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,

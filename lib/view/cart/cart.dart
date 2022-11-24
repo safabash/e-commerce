@@ -22,33 +22,37 @@ class Cart extends StatelessWidget {
           )),
       body: Consumer<CartProvider>(
         builder: (context, value, child) {
-          return value.cartList.isEmpty
-              ? const Text('Cart is Empty')
-              : ListView.separated(
-                  separatorBuilder: (context, index) {
-                    return const Divider();
-                  },
-                  itemCount: value.cartList.length,
-                  itemBuilder: ((context, index) {
-                    final product = value.cartList[index];
-                    return Container(
-                      height: 700,
-                      padding: const EdgeInsets.only(top: 15),
-                      decoration: const BoxDecoration(
-                          color: Color.fromARGB(255, 237, 235, 235),
-                          borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(35),
-                              topRight: Radius.circular(35))),
-                      child: Column(
-                        children: [
-                          CartItem(
-                              price: product.price,
-                              title: product.image,
-                              image: product.image),
-                        ],
+          if (value.cartProducts == null) {
+            return const Text('Cart is Empty');
+          } else if (value.isLoading == true) {
+            return const CircularProgressIndicator();
+          }
+          return Container(
+            decoration: const BoxDecoration(
+                color: Color.fromARGB(255, 236, 200, 115),
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(10),
+                  topRight: Radius.circular(10),
+                )),
+            child: ListView.separated(
+                separatorBuilder: (context, index) {
+                  return const Divider();
+                },
+                itemCount: value.cartProducts?.products.length ?? 0,
+                itemBuilder: ((context, index) {
+                  final product = value.cartProducts?.products[index];
+                  return Column(
+                    children: [
+                      CartItem(
+                        price: product!.product.price.toString(),
+                        title: product.product.name,
+                        image: product.product.colors[0].images[0],
+                        size: product.size,
                       ),
-                    );
-                  }));
+                    ],
+                  );
+                })),
+          );
         },
       ),
       bottomNavigationBar: const CartBottomBar(),

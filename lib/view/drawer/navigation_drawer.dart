@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/controller/cart/cart_provider.dart';
 import 'package:e_commerce_app/helpers/constants.dart';
 import 'package:e_commerce_app/view/delivery_address/delivery_address.dart';
 import 'package:e_commerce_app/view/home/home_page.dart';
@@ -83,15 +84,20 @@ class NavigationDrawer extends StatelessWidget {
                 MaterialPageRoute(builder: (context) => const Favorites()));
           },
         ),
-        ListTile(
-          leading: const Icon(
-            Icons.shopping_bag_outlined,
-            color: Colors.white,
-          ),
-          title: const Text('Orders', style: drawerTitlestyle),
-          onTap: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => const Cart()));
+        Consumer<CartProvider>(
+          builder: (context, value, child) {
+            return ListTile(
+              leading: const Icon(
+                Icons.shopping_bag_outlined,
+                color: Colors.white,
+              ),
+              title: const Text('Cart', style: drawerTitlestyle),
+              onTap: () {
+                value.getAllCartProducts(context);
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const Cart()));
+              },
+            );
           },
         ),
         ListTile(
