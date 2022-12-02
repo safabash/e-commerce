@@ -1,4 +1,5 @@
 import 'package:e_commerce_app/controller/single_product_controller/single_product_controller.dart';
+import 'package:e_commerce_app/helpers/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -31,7 +32,7 @@ class SizeButton extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                         border: Border.all(
                             color: value.selectedSize == index
-                                ? Colors.black
+                                ? kcolor
                                 : Colors.transparent),
                         color: Colors.white,
                         boxShadow: const [
@@ -43,7 +44,11 @@ class SizeButton extends StatelessWidget {
                     child: Center(
                       child: Text(
                         value.productElement!.size![index],
-                        style: const TextStyle(fontSize: 15),
+                        style: TextStyle(
+                            fontSize: 15,
+                            color: value.selectedSize == index
+                                ? kcolor
+                                : Colors.black),
                       ),
                     ),
                   ),

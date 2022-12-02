@@ -57,31 +57,34 @@ class SingleProduct extends StatelessWidget {
           children: [
             Consumer(
               builder: (context, SingleProductController value, child) {
-                return CarouselSlider.builder(
-                  options: CarouselOptions(
-                    height: 280.0,
-                    enlargeCenterPage: true,
-                    onPageChanged: (position, reason) {},
-                    enableInfiniteScroll: false,
+                return Container(
+                  color: Color.fromARGB(255, 195, 194, 194),
+                  child: CarouselSlider.builder(
+                    options: CarouselOptions(
+                      height: 280.0,
+                      enlargeCenterPage: true,
+                      onPageChanged: (position, reason) {},
+                      enableInfiniteScroll: true,
+                    ),
+                    itemBuilder:
+                        (BuildContext context, int index, int realIndex) {
+                      return Container(
+                          width: MediaQuery.of(context).size.width,
+                          decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  image: NetworkImage(value
+                                      .productElement!.colors![0].images[index]
+                                      .toString()),
+                                  fit: BoxFit.cover)));
+                    },
+                    itemCount: value.productElement!.colors![0].images.length,
                   ),
-                  itemBuilder:
-                      (BuildContext context, int index, int realIndex) {
-                    return Container(
-                        width: MediaQuery.of(context).size.width,
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image: NetworkImage(value
-                                    .productElement!.colors![0].images[index]
-                                    .toString()),
-                                fit: BoxFit.cover)));
-                  },
-                  itemCount: value.productElement!.colors![0].images.length,
                 );
               },
             ),
             Container(
               decoration: const BoxDecoration(
-                  color: Color.fromARGB(255, 234, 232, 232),
+                  color: Colors.white,
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(30),
                       topRight: Radius.circular(30))),
@@ -92,6 +95,7 @@ class SingleProduct extends StatelessWidget {
                   children: [
                     const SizedBox(height: 20),
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Text(
                           provider.productElement!.name!,
@@ -99,57 +103,66 @@ class SingleProduct extends StatelessWidget {
                         ),
                         const SizedBox(width: 60),
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             const Icon(
                               Icons.currency_rupee_outlined,
                               size: 17,
                             ),
                             Text(provider.productElement!.price!.toString(),
-                                style: const TextStyle(fontSize: 17))
+                                style: const TextStyle(fontSize: 20))
                           ],
                         ),
                       ],
                     ),
                     const SizedBox(height: 10),
-                    Text(
-                      provider.productElement!.description!,
-                      style:
-                          const TextStyle(fontFamily: 'Radley', fontSize: 16),
+                    Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Text(
+                        provider.productElement!.description!,
+                        style:
+                            const TextStyle(fontFamily: 'Radley', fontSize: 16),
+                      ),
                     ),
                     const SizedBox(height: 10),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Column(
-                          children: [
-                            const Text(
-                              'Colors',
-                              style:
-                                  TextStyle(fontFamily: 'Radley', fontSize: 19),
-                            ),
-                            boxheight10,
-                            Consumer<SingleProductController>(
-                              builder: (context, value, child) {
-                                return Colordot();
-                              },
-                            ),
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            const Text(
-                              'Sizes',
-                              style:
-                                  TextStyle(fontFamily: 'Radley', fontSize: 19),
-                            ),
-                            const SizedBox(
-                              height: 5,
-                            ),
-                            SizeButton()
-                          ],
-                        )
-                      ],
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              const SizedBox(height: 10),
+                              boxheight20,
+                              const Text(
+                                'Colors',
+                                style: TextStyle(
+                                    fontFamily: 'Radley', fontSize: 19),
+                              ),
+                              Consumer<SingleProductController>(
+                                builder: (context, value, child) {
+                                  return const Colordot();
+                                },
+                              ),
+                            ],
+                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              const Text(
+                                'Sizes',
+                                style: TextStyle(
+                                    fontFamily: 'Radley', fontSize: 19),
+                              ),
+                              const SizedBox(
+                                height: 5,
+                              ),
+                              SizeButton()
+                            ],
+                          )
+                        ],
+                      ),
                     ),
                     Center(
                         child: Column(

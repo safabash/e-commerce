@@ -81,7 +81,7 @@ class NavigationDrawer extends StatelessWidget {
           title: const Text('WishList', style: drawerTitlestyle),
           onTap: () {
             Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const Favorites()));
+                MaterialPageRoute(builder: (context) => const WishList()));
           },
         ),
         Consumer<CartProvider>(

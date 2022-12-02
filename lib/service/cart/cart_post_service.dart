@@ -1,26 +1,27 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import 'package:e_commerce_app/core/api/api_base_url.dart';
 import 'package:e_commerce_app/core/api/api_end_points.dart';
+
+import 'package:e_commerce_app/model/cart/cart_post_model.dart';
 import 'package:e_commerce_app/utils/exceptions/api_exceptions.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
-import '../../model/home/home_product_model.dart';
-
-class SingleProductService {
-  static Future<ProductElement?> getSingleProductService(
-      String productId, BuildContext context) async {
+class CartService {
+  static Future<bool?> cartPostService(CartPostModel model, context) async {
     final dio = Dio();
     const storage = FlutterSecureStorage();
-
     final token = await storage.read(key: 'token');
+
     try {
-      final response = await dio.get(
-          ApiBaseUrl.baseUrl + ApiEndPoints.products + productId,
+      final Response response = await dio.post(
+          ApiBaseUrl.baseUrl + ApiEndPoints.postProductToCart,
+          data: model.toJson(),
           options: Options(headers: {"Authorization": "Bearer $token"}));
       if (response.statusCode! >= 200 && response.statusCode! <= 299) {
-        ProductElement product = ProductElement.fromJson(response.data);
-        return product;
+        log(response.data.toString());
+        return response.data['status'];
       }
     } catch (e) {
       AppException.handleError(e, context);

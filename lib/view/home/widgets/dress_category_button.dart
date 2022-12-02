@@ -9,26 +9,25 @@ class DressButtonWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(right: 10),
-      child: OutlinedButton(
-          style: OutlinedButton.styleFrom(
-              shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(10)))),
-          onPressed: (() {}),
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              children: [
-                Image.network(
-                  image,
-                  height: 30,
-                  width: 30,
-                ),
-                Text(text,
-                    style: const TextStyle(
-                        fontFamily: 'Radley', color: Colors.black)),
-              ],
-            ),
-          )),
+      child: CircleAvatar(
+        backgroundColor: Colors.white,
+        radius: 49,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              Image.network(
+                image,
+                height: 30,
+                width: 30,
+              ),
+              Text(text,
+                  style: const TextStyle(
+                      fontFamily: 'Radley', color: Colors.black)),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

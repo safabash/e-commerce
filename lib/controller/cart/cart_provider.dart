@@ -1,10 +1,10 @@
 import 'package:e_commerce_app/model/cart/cart_get_model.dart';
 import 'package:e_commerce_app/model/cart/cart_post_model.dart';
-import 'package:e_commerce_app/service/cart/cart_services.dart';
+import 'package:e_commerce_app/service/cart/cart_post_service.dart';
 import 'package:e_commerce_app/view/widgets/app_pop_up.dart';
 import 'package:flutter/material.dart';
 
-import '../../model/authentication/product_model.dart';
+import '../../service/cart/cart_get_service.dart';
 
 class CartProvider with ChangeNotifier {
   bool isLoading = false;
@@ -45,7 +45,7 @@ class CartProvider with ChangeNotifier {
   void getAllCartProducts(context) async {
     isLoading = true;
     notifyListeners();
-    await CartService.cartGetService(context).then((value) {
+    await CartGetService.cartGetService(context).then((value) {
       if (value != null) {
         cartProducts = value;
         notifyListeners();

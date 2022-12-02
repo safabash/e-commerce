@@ -4,7 +4,6 @@ import 'package:dio/dio.dart';
 import 'package:e_commerce_app/core/api/api_base_url.dart';
 import 'package:e_commerce_app/core/api/api_end_points.dart';
 import 'package:e_commerce_app/model/home/home_category_model.dart';
-import 'package:e_commerce_app/utils/exceptions/api_exceptions.dart';
 
 class HomeCategoriesService {
   static Future<List<HomeCategoryModel>> getAllCategories() async {

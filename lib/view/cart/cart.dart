@@ -23,7 +23,7 @@ class Cart extends StatelessWidget {
       body: Consumer<CartProvider>(
         builder: (context, value, child) {
           if (value.cartProducts == null) {
-            return const Text('Cart is Empty');
+            return const Center(child: Text('Cart is Empty'));
           } else if (value.isLoading == true) {
             return const CircularProgressIndicator();
           }

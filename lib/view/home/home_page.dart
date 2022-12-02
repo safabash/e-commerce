@@ -72,6 +72,7 @@ class HomePage extends StatelessWidget {
                 const SizedBox(height: 20),
                 CarouselSlider.builder(
                   options: CarouselOptions(
+                    height: 150,
                     autoPlay: true,
                   ),
                   itemBuilder:
@@ -103,8 +104,8 @@ class HomePage extends StatelessWidget {
                                   const SliverGridDelegateWithFixedCrossAxisCount(
                                       childAspectRatio: 0.7,
                                       crossAxisCount: 2,
-                                      mainAxisSpacing: 0,
-                                      crossAxisSpacing: 0),
+                                      mainAxisSpacing: 10,
+                                      crossAxisSpacing: 7),
                               itemBuilder: ((context, index) => ProductCard(
                                     product: value.products?.products[index],
                                   )));

@@ -6,5 +6,7 @@ class ApiEndPoints {
   static String fogotOtpverification = '/verifyOtp';
   static const categories = "/admin/categories";
   static const products = '/products/';
-  static String postProductToCart = '/products/cart/';
+  static String postProductToCart = '/cart';
+  static String wishlist = '/wishlist';
+  static String removewishlist = '/wishlist/';
 }
