@@ -36,6 +36,8 @@ dependencies:
     sdk: flutter
   flutter_otp_text_field: ^1.1.1
   flutter_secure_storage: ^6.0.0
+  geolocator: ^9.0.2
+  google_maps_flutter: ^2.2.1
   google_sign_in: ^5.4.2
   lottie: ^1.4.3
   otp_text_field: ^1.1.3

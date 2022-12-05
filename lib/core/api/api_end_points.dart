@@ -9,4 +9,5 @@ class ApiEndPoints {
   static String postProductToCart = '/cart';
   static String wishlist = '/wishlist';
   static String removewishlist = '/wishlist/';
+  static String categoryProducts = '/products?category=';
 }

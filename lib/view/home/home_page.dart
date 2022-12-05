@@ -63,28 +63,14 @@ class HomePage extends StatelessWidget {
                                 scrollDirection: Axis.horizontal,
                                 itemBuilder: ((context, index) {
                                   return DressButtonWidget(
-                                      image: value.categoryList[index].image,
-                                      text: value.categoryList[index].name);
+                                      index: index,
+                                      image: value.categoryList[index].icon
+                                          .toString(),
+                                      text: value.categoryList[index].category
+                                          .toString());
                                 })),
                           );
                   },
-                ),
-                const SizedBox(height: 20),
-                CarouselSlider.builder(
-                  options: CarouselOptions(
-                    height: 150,
-                    autoPlay: true,
-                  ),
-                  itemBuilder:
-                      (BuildContext context, int index, int realIndex) {
-                    return Container(
-                        width: MediaQuery.of(context).size.width * 0.9,
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image: NetworkImage(pagesBanner[index]),
-                                fit: BoxFit.fill)));
-                  },
-                  itemCount: 3,
                 ),
                 const SizedBox(height: 20),
                 Consumer<HomeController>(builder: (context, value, child) {
@@ -99,7 +85,7 @@ class HomePage extends StatelessWidget {
                           : GridView.builder(
                               shrinkWrap: true,
                               physics: const NeverScrollableScrollPhysics(),
-                              itemCount: value.products?.products.length,
+                              itemCount: value.products!.length,
                               gridDelegate:
                                   const SliverGridDelegateWithFixedCrossAxisCount(
                                       childAspectRatio: 0.7,
@@ -107,7 +93,8 @@ class HomePage extends StatelessWidget {
                                       mainAxisSpacing: 10,
                                       crossAxisSpacing: 7),
                               itemBuilder: ((context, index) => ProductCard(
-                                    product: value.products?.products[index],
+                                    product: value.products,
+                                    index: index,
                                   )));
                 })
               ],

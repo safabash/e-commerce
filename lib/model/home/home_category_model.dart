@@ -1,17 +1,40 @@
 class HomeCategoryModel {
-  final int id;
-  final String name;
-  final String image;
   HomeCategoryModel({
-    required this.id,
-    required this.image,
-    required this.name,
+    this.id,
+    this.category,
+    this.icon,
+    this.homeCategoryModelId,
+    this.subCategories,
   });
-  factory HomeCategoryModel.fromJson(Map<String, dynamic> json) {
-    return HomeCategoryModel(
-      id: json['id'],
-      image: json['icon'],
-      name: json['category'],
-    );
-  }
+
+  String? id;
+  String? category;
+  String? icon;
+  int? homeCategoryModelId;
+  List<SubCategory>? subCategories;
+
+  factory HomeCategoryModel.fromJson(Map<String, dynamic> json) =>
+      HomeCategoryModel(
+        id: json["_id"],
+        category: json["category"],
+        icon: json["icon"],
+        homeCategoryModelId: json["id"],
+        subCategories: List<SubCategory>.from(
+            json["subCategories"].map((x) => SubCategory.fromJson(x))),
+      );
+}
+
+class SubCategory {
+  SubCategory({
+    this.name,
+    this.id,
+  });
+
+  String? name;
+  String? id;
+
+  factory SubCategory.fromJson(Map<String, dynamic> json) => SubCategory(
+        name: json["name"],
+        id: json["_id"],
+      );
 }

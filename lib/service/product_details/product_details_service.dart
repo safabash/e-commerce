@@ -8,7 +8,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import '../../model/home/home_product_model.dart';
 
 class SingleProductService {
-  static Future<ProductElement?> getSingleProductService(
+  static Future<Products?> getSingleProductService(
       String productId, BuildContext context) async {
     final dio = Dio();
     const storage = FlutterSecureStorage();
@@ -19,7 +19,7 @@ class SingleProductService {
           ApiBaseUrl.baseUrl + ApiEndPoints.products + productId,
           options: Options(headers: {"Authorization": "Bearer $token"}));
       if (response.statusCode! >= 200 && response.statusCode! <= 299) {
-        ProductElement product = ProductElement.fromJson(response.data);
+        Products product = Products.fromJson(response.data);
         return product;
       }
     } catch (e) {

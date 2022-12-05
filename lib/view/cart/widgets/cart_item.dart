@@ -6,11 +6,18 @@ import '../../../controller/cart/cart_provider.dart';
 import '../../../helpers/constants.dart';
 
 class CartItem extends StatelessWidget {
-  CartItem({super.key, this.title, this.price, this.image, this.size});
+  CartItem(
+      {super.key,
+      this.title,
+      this.price,
+      this.image,
+      this.size,
+      this.function});
   String? title;
   String? size;
   String? image;
   String? price;
+  void Function()? function;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -37,7 +44,7 @@ class CartItem extends StatelessWidget {
                   style: titleStyleSingleProduct,
                 ),
                 Text(
-                  'Size:  ${size}',
+                  'Size:  $size',
                   style: fontStyle,
                 ),
                 Row(
@@ -56,7 +63,9 @@ class CartItem extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    function;
+                  },
                   icon: const Icon(
                     Icons.delete,
                     color: Colors.red,

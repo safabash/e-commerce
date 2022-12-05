@@ -4,10 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class SizeButton extends StatelessWidget {
-  SizeButton({
+  const SizeButton({
     Key? key,
   }) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Consumer<SingleProductController>(
@@ -17,7 +16,7 @@ class SizeButton extends StatelessWidget {
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             shrinkWrap: true,
-            itemCount: value.productElement!.size!.length,
+            itemCount: value.productElement?.size?.length,
             itemBuilder: (context, index) {
               return GestureDetector(
                 onTap: () {

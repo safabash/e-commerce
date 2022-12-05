@@ -1,6 +1,5 @@
 import 'package:e_commerce_app/helpers/constants.dart';
 import 'package:flutter/material.dart';
-
 import '../widgets/appbar_title.dart';
 import '../widgets/submit_button.dart';
 
@@ -27,87 +26,76 @@ class AddAddress extends StatelessWidget {
           )),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Column(
-          children: [
-            TextFormField(
-              decoration: const InputDecoration(
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(20))),
-                  fillColor: Color.fromARGB(255, 223, 220, 220),
-                  filled: true,
-                  label: Text('Full name'),
-                  labelStyle: fontStyle),
-            ),
-            boxheight20,
-            TextFormField(
-              decoration: const InputDecoration(
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(20))),
-                  fillColor: Color.fromARGB(255, 223, 220, 220),
-                  filled: true,
-                  label: Text('Pincode'),
-                  labelStyle: fontStyle),
-            ),
-            boxheight20,
-            TextFormField(
-              maxLines: 5,
-              minLines: 3,
-              decoration: const InputDecoration(
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(20))),
-                  fillColor: Color.fromARGB(255, 223, 220, 220),
-                  filled: true,
-                  label: Text('Address'),
-                  labelStyle: fontStyle),
-            ),
-            boxheight20,
-            Row(
-              children: [
-                SizedBox(
-                  width: 180,
-                  child: TextFormField(
-                    decoration: const InputDecoration(
-                        border: OutlineInputBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(16))),
-                        fillColor: Color.fromARGB(255, 223, 220, 220),
-                        filled: true,
-                        label: Text('City'),
-                        labelStyle: fontStyle),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              boxheight20,
+              TextFormField(
+                decoration: const InputDecoration(
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(20))),
+                    fillColor: Color.fromARGB(255, 223, 220, 220),
+                    filled: true,
+                    label: Text('Full name'),
+                    labelStyle: fontStyle),
+              ),
+              boxheight20,
+              TextFormField(
+                decoration: const InputDecoration(
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(20))),
+                    fillColor: Color.fromARGB(255, 223, 220, 220),
+                    filled: true,
+                    label: Text('Pincode'),
+                    labelStyle: fontStyle),
+              ),
+              boxheight20,
+              TextFormField(
+                maxLines: 5,
+                minLines: 3,
+                decoration: const InputDecoration(
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(20))),
+                    fillColor: Color.fromARGB(255, 223, 220, 220),
+                    filled: true,
+                    label: Text('Address'),
+                    labelStyle: fontStyle),
+              ),
+              boxheight20,
+              Row(
+                children: [
+                  SizedBox(
+                    width: 374,
+                    child: TextFormField(
+                      decoration: const InputDecoration(
+                          border: OutlineInputBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(16))),
+                          fillColor: Color.fromARGB(255, 223, 220, 220),
+                          filled: true,
+                          label: Text('City'),
+                          labelStyle: fontStyle),
+                    ),
                   ),
-                ),
-                boxw10,
-                SizedBox(
-                  width: 180,
-                  child: TextFormField(
-                    decoration: const InputDecoration(
-                        border: OutlineInputBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(16))),
-                        fillColor: Color.fromARGB(255, 223, 220, 220),
-                        filled: true,
-                        label: Text('State'),
-                        labelStyle: fontStyle),
-                  ),
-                )
-              ],
-            ),
-            boxheight20,
-            TextFormField(
-              decoration: const InputDecoration(
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(20))),
-                  fillColor: Color.fromARGB(255, 223, 220, 220),
-                  filled: true,
-                  label: Text('Mobile'),
-                  labelStyle: fontStyle),
-            ),
-            const SizedBox(height: 140),
-            Button(
-              text: 'Save',
-              onPressed: (() {}),
-            )
-          ],
+                ],
+              ),
+              boxheight20,
+              TextFormField(
+                decoration: const InputDecoration(
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(20))),
+                    fillColor: Color.fromARGB(255, 223, 220, 220),
+                    filled: true,
+                    label: Text('Mobile'),
+                    labelStyle: fontStyle),
+              ),
+              const SizedBox(height: 140),
+              Button(
+                text: 'Save',
+                onPressed: (() {}),
+              )
+            ],
+          ),
         ),
       ),
     );

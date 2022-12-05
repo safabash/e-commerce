@@ -1,5 +1,5 @@
-class WishlistGetModel {
-  WishlistGetModel({
+class CategoryProductsModel {
+  CategoryProductsModel({
     this.id,
     this.name,
     this.category,
@@ -14,20 +14,20 @@ class WishlistGetModel {
 
   String? id;
   String? name;
-  dynamic category;
-  dynamic price;
+  Category? category;
+  int? price;
   List<dynamic>? size;
   List<Color>? colors;
-  dynamic inventory;
+  int? inventory;
   String? description;
-  dynamic offer;
+  int? offer;
   List<dynamic>? ratings;
 
-  factory WishlistGetModel.fromJson(Map<String, dynamic> json) =>
-      WishlistGetModel(
+  factory CategoryProductsModel.fromJson(Map<String, dynamic> json) =>
+      CategoryProductsModel(
         id: json["_id"],
         name: json["name"],
-        category: json["category"],
+        category: Category.fromJson(json["category"]),
         price: json["price"],
         size: List<dynamic>.from(json["size"].map((x) => x)),
         colors: List<Color>.from(json["colors"].map((x) => Color.fromJson(x))),
@@ -38,20 +38,44 @@ class WishlistGetModel {
       );
 }
 
-class CategoryClass {
-  CategoryClass({
+class Category {
+  Category({
     this.id,
+    this.category,
+    this.icon,
+    this.categoryId,
+    this.subCategories,
   });
 
   String? id;
+  String? category;
+  String? icon;
+  int? categoryId;
+  List<SubCategory>? subCategories;
 
-  factory CategoryClass.fromJson(Map<String, dynamic> json) => CategoryClass(
-        id: json["id"],
+  factory Category.fromJson(Map<String, dynamic> json) => Category(
+        id: json["_id"],
+        category: json["category"],
+        icon: json["icon"],
+        categoryId: json["id"],
+        subCategories: List<SubCategory>.from(
+            json["subCategories"].map((x) => SubCategory.fromJson(x))),
       );
+}
 
-  Map<String, dynamic> toJson() => {
-        "id": id,
-      };
+class SubCategory {
+  SubCategory({
+    this.name,
+    this.id,
+  });
+
+  String? name;
+  String? id;
+
+  factory SubCategory.fromJson(Map<String, dynamic> json) => SubCategory(
+        name: json["name"],
+        id: json["_id"],
+      );
 }
 
 class Color {

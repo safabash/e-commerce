@@ -1,7 +1,11 @@
 import 'dart:developer';
+
+import 'package:e_commerce_app/model/category/category_product_model.dart';
 import 'package:e_commerce_app/model/home/home_category_model.dart';
 import 'package:e_commerce_app/model/home/home_product_model.dart';
+import 'package:e_commerce_app/service/category/category_products_service.dart';
 import 'package:e_commerce_app/service/home/category_home_services.dart';
+import 'package:e_commerce_app/view/category/category_product_view.dart';
 import 'package:flutter/material.dart';
 
 import '../../model/authentication/product_model.dart';
@@ -24,7 +28,7 @@ class HomeController with ChangeNotifier {
     notifyListeners();
   }
 
-  Products? products;
+  List<Products>? products;
   void getAllProducts() async {
     log('start');
     isLoading = true;
@@ -32,6 +36,36 @@ class HomeController with ChangeNotifier {
     await HomeProductService().getAllProducts().then((value) {
       if (value != null) {
         products = value;
+        isLoading = false;
+        notifyListeners();
+      }
+    });
+    log('end');
+    isLoading = false;
+    notifyListeners();
+  }
+
+  void navigateToCategoryProducts(context, String title, String categoryId) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => CategoryProductView(
+          title: title,
+          categoryId: categoryId,
+        ),
+      ),
+    );
+  }
+
+  List<CategoryProductsModel>? categoryProducts;
+  void getAllCategoryProducts(String categoryId, context) async {
+    log('start');
+    isLoading = true;
+    notifyListeners();
+    await CategoryProductService()
+        .getAllCategoryProducts(categoryId, context)
+        .then((value) {
+      if (value != null) {
+        categoryProducts = value;
         isLoading = false;
         notifyListeners();
       }

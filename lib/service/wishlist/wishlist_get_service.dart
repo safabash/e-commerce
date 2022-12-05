@@ -36,6 +36,7 @@ class WishlistGetService {
       /*  Catch error   */
 
     } catch (e) {
+      log(e.toString());
       log('Reg Error catched');
       AppException.handleError(e, context);
     }

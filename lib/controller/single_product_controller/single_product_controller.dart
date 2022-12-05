@@ -32,23 +32,27 @@ class SingleProductController with ChangeNotifier {
   }
 
   bool isLoading = false;
-  ProductElement? productElement;
-  void getSingleProductDetails(String productId, context) async {
+  Products? productElement;
+  void getSingleProductDetail(String productId, context) async {
     isLoading = true;
     notifyListeners();
     await SingleProductService.getSingleProductService(productId, context)
         .then((value) {
       if (value != null) {
         productElement = value;
-        notifyListeners();
         isLoading = false;
         notifyListeners();
-        Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-          return const SingleProduct();
-        }));
       }
     });
     isLoading = false;
     notifyListeners();
+  }
+
+  void navigateToProductDetails(context, int index, String productId) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+      return SingleProduct(
+        productId: productId,
+      );
+    }));
   }
 }

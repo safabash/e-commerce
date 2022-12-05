@@ -17,7 +17,7 @@ class Colordot extends StatelessWidget {
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             shrinkWrap: true,
-            itemCount: product!.colors!.length,
+            itemCount: product?.colors?.length,
             itemBuilder: (BuildContext context, int index) {
               return GestureDetector(
                 onTap: (() {

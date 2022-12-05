@@ -54,7 +54,7 @@ class ScreenWishlistProvider with ChangeNotifier {
     WishlistDeteteItemService.wishlistDeteteItemService(productId, context)
         .then((value) {
       if (value != null) {
-        AppPopUp.showToast(context, value.message.toString(), Colors.green);
+        AppPopUp.showToast(context, value.message.toString(), Colors.red);
         getAllWishlistProducts(context);
       }
     });

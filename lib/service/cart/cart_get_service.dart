@@ -24,7 +24,8 @@ class CartGetService {
         return CartGetProducts.fromJson(response.data);
       }
     } catch (e) {
-      // AppException.handleError(e, context);
+      log(e.toString());
+      AppException.handleError(e, context);
     }
     return null;
   }
