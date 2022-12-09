@@ -1,6 +1,7 @@
 import 'package:e_commerce_app/model/cart/cart_get_model.dart';
 import 'package:e_commerce_app/model/cart/cart_post_model.dart';
 import 'package:e_commerce_app/service/cart/cart_post_service.dart';
+import 'package:e_commerce_app/view/payment/payment.dart';
 import 'package:e_commerce_app/view/widgets/app_pop_up.dart';
 import 'package:flutter/material.dart';
 
@@ -14,11 +15,13 @@ class CartProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  // List<Product> cartList = [];
-  // void addToCart(Product product) {
-  //   cartList.add(product);
-  //   notifyListeners();
-  // }
+  void navigateToPayment(context) {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => PaymentOption(),
+        ));
+  }
 
   void itemCountDecrease() {
     if (itemcount > 1) {

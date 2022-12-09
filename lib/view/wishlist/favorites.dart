@@ -47,10 +47,10 @@ class WishList extends StatelessWidget {
                   return Column(
                     children: [
                       CartItem(
+                        id: product.id.toString(),
                         price: product.price.toString(),
                         title: product.name,
                         image: product.colors![0].images![0],
-                        size: product.size![index],
                       ),
                     ],
                   );

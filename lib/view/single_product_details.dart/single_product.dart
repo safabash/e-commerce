@@ -54,14 +54,14 @@ class SingleProduct extends StatelessWidget {
         child: Consumer(
           builder: (context, SingleProductController value, child) {
             return value.isLoading
-                ? Center(child: CircularProgressIndicator())
+                ? const Center(child: CircularProgressIndicator())
                 : value.productElement == null
-                    ? SizedBox()
+                    ? const SizedBox()
                     : Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Container(
-                            color: Color.fromARGB(255, 195, 194, 194),
+                            color: Colors.white,
                             child: CarouselSlider.builder(
                               options: CarouselOptions(
                                 height: 280.0,
@@ -88,7 +88,7 @@ class SingleProduct extends StatelessWidget {
                           ),
                           Container(
                             decoration: const BoxDecoration(
-                                color: Colors.white,
+                                color: Color.fromARGB(255, 219, 218, 218),
                                 borderRadius: BorderRadius.only(
                                     topLeft: Radius.circular(30),
                                     topRight: Radius.circular(30))),
@@ -155,7 +155,7 @@ class SingleProduct extends StatelessWidget {
                                             ),
                                             Consumer<SingleProductController>(
                                               builder: (context, value, child) {
-                                                return Colordot();
+                                                return const Colordot();
                                               },
                                             ),
                                           ],
@@ -163,14 +163,14 @@ class SingleProduct extends StatelessWidget {
                                         Column(
                                           mainAxisAlignment:
                                               MainAxisAlignment.start,
-                                          children: [
-                                            const Text(
+                                          children: const [
+                                            Text(
                                               'Sizes',
                                               style: TextStyle(
                                                   fontFamily: 'Radley',
                                                   fontSize: 19),
                                             ),
-                                            const SizedBox(
+                                            SizedBox(
                                               height: 5,
                                             ),
                                             SizeButton()
@@ -187,7 +187,7 @@ class SingleProduct extends StatelessWidget {
                                           return Button(
                                             text: 'Add to Cart',
                                             onPressed: () {
-                                              provider.goToCart(context);
+                                              // provider.goToCart(context);
                                               value.addProductsToCart(
                                                   provider.productElement!.id!,
                                                   provider.productElement!

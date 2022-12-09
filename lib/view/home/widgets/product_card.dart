@@ -1,4 +1,3 @@
-import 'package:e_commerce_app/controller/home/home_controller.dart';
 import 'package:e_commerce_app/controller/single_product_controller/single_product_controller.dart';
 import 'package:e_commerce_app/controller/wishlist/wishlist_controller.dart';
 

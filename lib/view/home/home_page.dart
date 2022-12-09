@@ -1,6 +1,5 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:e_commerce_app/controller/home/home_controller.dart';
-import 'package:e_commerce_app/helpers/constants.dart';
+import 'package:e_commerce_app/controller/wishlist/wishlist_controller.dart';
 
 import 'package:e_commerce_app/view/search/search.dart';
 import 'package:flutter/material.dart';
@@ -18,8 +17,15 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<HomeController>(context, listen: false);
-
+    final providerWish =
+        Provider.of<ScreenWishlistProvider>(context, listen: false);
+    WidgetsBinding.instance.addPostFrameCallback(
+      (_) {
+        providerWish.getAllWishlistProducts(
+          context,
+        );
+      },
+    );
     return DefaultTabController(
       length: 3,
       child: Scaffold(

@@ -1,6 +1,8 @@
+import 'package:e_commerce_app/controller/cart/cart_provider.dart';
 import 'package:e_commerce_app/helpers/constants.dart';
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../widgets/submit_button.dart';
 
@@ -34,7 +36,9 @@ class CartBottomBar extends StatelessWidget {
             ),
             Button(
               text: 'Check Out',
-              onPressed: (() {}),
+              onPressed: (() {
+                context.read<CartProvider>().navigateToPayment(context);
+              }),
             )
           ],
         ),

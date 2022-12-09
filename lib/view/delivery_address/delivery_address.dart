@@ -1,7 +1,9 @@
 import 'package:e_commerce_app/helpers/constants.dart';
 import 'package:e_commerce_app/view/delivery_address/add_address.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../../controller/address/add_address_controller.dart';
 import '../widgets/appbar_title.dart';
 import '../widgets/submit_button.dart';
 
@@ -10,69 +12,100 @@ class DeliveryAddress extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<AddressController>(context, listen: false);
+    WidgetsBinding.instance.addPostFrameCallback(
+      (_) {
+        provider.getAddressFn(context);
+      },
+    );
     return Scaffold(
-        appBar: AppBar(
-            iconTheme: const IconThemeData(color: Colors.black),
-            backgroundColor: Colors.transparent,
-            elevation: 0,
-            leading: IconButton(
-                onPressed: () {
-                  Navigator.pop(context);
+      appBar: AppBar(
+          iconTheme: const IconThemeData(color: Colors.black),
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          leading: IconButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              icon: const Icon(
+                Icons.arrow_back_ios,
+                color: Colors.black,
+              )),
+          title: AppbarTitle(
+            title: 'Delivery Address',
+          )),
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: ListView(
+            children: [
+              Consumer<AddressController>(
+                builder: (context, value, child) {
+                  return value.isLoading == true
+                      ? const Center(child: CircularProgressIndicator())
+                      : ListView.builder(
+                          physics: const NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          itemCount: value.address.length,
+                          itemBuilder: (context, index) {
+                            return Card(
+                              margin: const EdgeInsets.all(10),
+                              elevation: 5,
+                              child: ListTile(
+                                leading: Radio(
+                                    activeColor: kcolor,
+                                    value: index,
+                                    groupValue: value.selectedType, //
+                                    onChanged: ((newValue) {
+                                      value.radionButtonChange(newValue!);
+                                    })),
+                                title: Text(
+                                  "${value.address[index].name}",
+                                  style: const TextStyle(
+                                      fontFamily: 'Radley', fontSize: 21),
+                                ),
+                                subtitle: Text(
+                                  "Phone: ${value.address[index].phone}\nAddress: ${value.address[index].address}\n City: ${value.address[index].city},\n Pin:${value.address[index].pincode}",
+                                  style: fontStyle,
+                                ),
+                                trailing: Column(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    IconButton(
+                                      onPressed: () {
+                                        value.showDeleteAlert(
+                                            context, value.address[index].id);
+
+                                        // value.getAddressFn(context);
+                                      },
+                                      icon: const Icon(
+                                        Icons.delete,
+                                        color: kcolor,
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            );
+                          },
+                        );
                 },
-                icon: const Icon(
-                  Icons.arrow_back_ios,
-                  color: Colors.black,
-                )),
-            title: AppbarTitle(
-              title: 'Delivery Address',
-            )),
-        body: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                SizedBox(
-                  child: Card(
-                    margin: const EdgeInsets.all(10),
-                    elevation: 5,
-                    child: ListTile(
-                      title: const Text(
-                        'Safa Basheer\n',
-                        style: TextStyle(fontFamily: 'Radley'),
-                      ),
-                      subtitle: const Text(
-                        "987654321\nkakkad(p.o),Malappuram\nKerala, Pin:676323",
-                        style: fontStyle,
-                      ),
-                      trailing: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: const [
-                          Icon(
-                            Icons.delete,
-                            color: kcolor,
-                          ),
-                          Icon(
-                            Icons.edit,
-                            color: kcolor,
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                Button(
-                  text: 'Add Address',
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const AddAddress()));
-                  },
-                )
-              ],
-            ),
+              ),
+              const SizedBox(height: 40),
+              Button(
+                text: 'Add Address',
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const AddAddress()));
+                },
+              )
+            ],
           ),
-        ));
+        ),
+      ),
+    );
   }
 }

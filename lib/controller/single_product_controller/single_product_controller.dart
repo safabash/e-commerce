@@ -21,7 +21,7 @@ class SingleProductController with ChangeNotifier {
 
   void goToPayment(context) {
     Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-      return const PaymentOption();
+      return PaymentOption();
     }));
   }
 

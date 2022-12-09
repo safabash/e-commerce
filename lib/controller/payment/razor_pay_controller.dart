@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:e_commerce_app/model/address/address_get_model.dart';
 import 'package:e_commerce_app/service/payment/payment_service.dart';
 import 'package:flutter/material.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
@@ -7,6 +8,28 @@ import 'package:razorpay_flutter/razorpay_flutter.dart';
 import '../../view/widgets/app_pop_up.dart';
 
 class PaymentOptionController with ChangeNotifier {
+  int index1 = 0;
+  void cancelFunction() {
+    if (index1 > 0) {
+      index1 -= 1;
+    }
+    notifyListeners();
+  }
+
+  void continueFunction() {
+    if (index1 <= 0 && index1 != 1) {
+      index1 += 1;
+    } else if (index1 == 1) {
+      goToPayment();
+    }
+    notifyListeners();
+  }
+
+  void onStepTapped(index) {
+    index1 = index;
+    notifyListeners();
+  }
+
   String selectedType = 'online';
   final razorpay = Razorpay();
   bool isSuccess = false;

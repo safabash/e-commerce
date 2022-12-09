@@ -14,16 +14,13 @@ class WishlistDeteteItemService {
     final dio = Dio();
     const storage = FlutterSecureStorage();
     try {
-      log('called add to WishList DeteteItem fuction');
+      log('deleted from wishlist');
       final token = await storage.read(key: 'token');
-      log('get token :$token');
+
       final Response response = await dio.delete(
         ApiBaseUrl.baseUrl + ApiEndPoints.removewishlist + productId,
         options: Options(headers: {"Authorization": "Bearer $token"}),
       );
-      log('api called success');
-
-      /*  check status code is Succes or bad requist   */
 
       if (response.statusCode! >= 200 && response.statusCode! <= 299) {
         return RemoveWishlistModel.fromJson(response.data);
@@ -32,8 +29,8 @@ class WishlistDeteteItemService {
       /*  Catch error   */
 
     } catch (e) {
-      log('Reg Error catched');
-      AppException.handleError(e, context);
+      log('delete_problem');
+      // AppException.handleError(e, context);
     }
     return null;
   }

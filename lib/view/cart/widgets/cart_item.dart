@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 
 import '../../../controller/cart/cart_provider.dart';
 import '../../../helpers/constants.dart';
+import '../../widgets/wishlist_button.dart';
 
 class CartItem extends StatelessWidget {
   CartItem(
@@ -12,11 +13,13 @@ class CartItem extends StatelessWidget {
       this.price,
       this.image,
       this.size,
-      this.function});
+      this.function,
+      this.id});
   String? title;
   String? size;
   String? image;
   String? price;
+  String? id;
   void Function()? function;
   @override
   Widget build(BuildContext context) {
@@ -62,14 +65,9 @@ class CartItem extends StatelessWidget {
           Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              IconButton(
-                  onPressed: () {
-                    function;
-                  },
-                  icon: const Icon(
-                    Icons.delete,
-                    color: Colors.red,
-                  )),
+              AddorRemoveFavoriteWidget(
+                productId: id.toString(),
+              ),
               Consumer<CartProvider>(
                 builder: (context, value, child) {
                   return Padding(

@@ -15,11 +15,7 @@ class WishlistPostService {
     final token = await storage.read(key: 'token');
 
     try {
-      log('called addto Wishlist fuction');
-
-      log('get token :$token');
-      /*  call api key   */
-
+      log('postDone');
       final Response response = await dio.post(
         ApiBaseUrl.baseUrl + ApiEndPoints.wishlist,
         data: {
@@ -27,18 +23,13 @@ class WishlistPostService {
         },
         options: Options(headers: {"Authorization": "Bearer $token"}),
       );
-      log('api called success');
-
-      /*  check status code is Succes or bad requist   */
 
       if (response.statusCode! >= 200 && response.statusCode! <= 299) {
-        if (response.data["success"] == true) {
-          return true;
-        }
-        return false;
+        return response.data['status'];
       }
     } catch (e) {
-      AppException.handleError(e, context);
+      // AppException.handleError(e, context);
+      log('post_wish_problem');
     }
     return false;
   }

@@ -1,12 +1,12 @@
 import 'package:e_commerce_app/controller/home/home_controller.dart';
-import 'package:e_commerce_app/controller/wishlist/wishlist_controller.dart';
-import 'package:e_commerce_app/view/widgets/wishlist_button.dart';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+
 import 'package:provider/provider.dart';
 
+import '../../controller/wishlist/wishlist_controller.dart';
 import '../widgets/appbar_title.dart';
+import '../widgets/wishlist_button.dart';
 
 class CategoryProductView extends StatelessWidget {
   const CategoryProductView(
@@ -82,6 +82,18 @@ class CategoryProductView extends StatelessWidget {
                                             fit: BoxFit.fill,
                                           ),
                                         ),
+                                        Padding(
+                                            padding: const EdgeInsets.only(
+                                                left: 140),
+                                            child: Consumer<
+                                                ScreenWishlistProvider>(
+                                              builder: (context, value, child) {
+                                                return AddorRemoveFavoriteWidget(
+                                                  productId: categoryProduct!.id
+                                                      .toString(),
+                                                );
+                                              },
+                                            ))
                                       ],
                                     ),
                                   ),

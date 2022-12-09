@@ -13,32 +13,27 @@ class WishlistGetService {
     final dio = Dio();
     const storage = FlutterSecureStorage();
     try {
-      log('called add to WishList get fuction');
+      log('getDone');
       final token = await storage.read(key: 'token');
-      log('get token :$token');
+
       final Response response = await dio.get(
         ApiBaseUrl.baseUrl + ApiEndPoints.wishlist,
         options: Options(headers: {"Authorization": "Bearer $token"}),
       );
-      log('api called success');
 
-      /*  check status code is Succes or bad requist   */
-
-      if (response.statusCode! >= 200 && response.statusCode! <= 299) {
-        log('WishList Get response :${response.data}');
+      if (response.statusCode! == 200) {
         final List<WishlistGetModel> wishlistModel =
             (response.data as List).map((e) {
           return WishlistGetModel.fromJson(e);
         }).toList();
         return wishlistModel;
       }
-
-      /*  Catch error   */
-
+      if (response.statusCode! == 204) {
+        return [];
+      }
     } catch (e) {
-      log(e.toString());
-      log('Reg Error catched');
       AppException.handleError(e, context);
+      log('getProblem');
     }
     return null;
   }
