@@ -13,11 +13,9 @@ class DeliveryAddress extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<AddressController>(context, listen: false);
-    WidgetsBinding.instance.addPostFrameCallback(
-      (_) {
-        provider.getAddressFn(context);
-      },
-    );
+
+    provider.getAddressFn(context);
+
     return Scaffold(
       appBar: AppBar(
           iconTheme: const IconThemeData(color: Colors.black),
@@ -41,8 +39,8 @@ class DeliveryAddress extends StatelessWidget {
             children: [
               Consumer<AddressController>(
                 builder: (context, value, child) {
-                  return value.isLoading == true
-                      ? const Center(child: CircularProgressIndicator())
+                  return value.address.isEmpty
+                      ? const Center(child: Text('No Address Saved'))
                       : ListView.builder(
                           physics: const NeverScrollableScrollPhysics(),
                           shrinkWrap: true,
@@ -76,8 +74,6 @@ class DeliveryAddress extends StatelessWidget {
                                       onPressed: () {
                                         value.showDeleteAlert(
                                             context, value.address[index].id);
-
-                                        // value.getAddressFn(context);
                                       },
                                       icon: const Icon(
                                         Icons.delete,

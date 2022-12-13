@@ -13,8 +13,8 @@ class SplashProvider with ChangeNotifier {
     final token = await storage.read(key: 'token');
 
     if (token != null) {
-      Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (ctx) => const HomePage()));
+      Navigator.of(context)
+          .pushReplacement(MaterialPageRoute(builder: (ctx) => HomePage()));
     } else {
       Navigator.of(context)
           .pushReplacement(MaterialPageRoute(builder: (ctx) => LogIn()));

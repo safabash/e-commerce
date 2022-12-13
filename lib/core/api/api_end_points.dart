@@ -12,4 +12,5 @@ class ApiEndPoints {
   static String categoryProducts = '/products?category=';
   static String address = '/profile/address';
   static String removeAddress = '/profile/address/';
+  static String carousal = '/admin/carousal';
 }

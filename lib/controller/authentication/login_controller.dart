@@ -50,7 +50,7 @@ class LogInController extends ChangeNotifier {
         if (value != null) {
           Navigator.of(context).pushAndRemoveUntil(
               MaterialPageRoute(
-                builder: (context) => const HomePage(),
+                builder: (context) => HomePage(),
               ),
               (route) => false);
         }
@@ -79,7 +79,7 @@ class LogInController extends ChangeNotifier {
       final result = await googleSignIn.signIn();
       isLoading = false;
       Navigator.of(context)
-          .push(MaterialPageRoute(builder: (context) => const HomePage()));
+          .push(MaterialPageRoute(builder: (context) => HomePage()));
       log(result.toString());
       notifyListeners();
     } catch (e) {

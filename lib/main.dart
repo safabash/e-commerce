@@ -10,7 +10,6 @@ import 'package:e_commerce_app/controller/payment/razor_pay_controller.dart';
 import 'package:e_commerce_app/controller/single_product_controller/single_product_controller.dart';
 import 'package:e_commerce_app/controller/splash/splash_provider.dart';
 import 'package:e_commerce_app/controller/wishlist/wishlist_controller.dart';
-import 'package:e_commerce_app/view/delivery_address/delivery_address.dart';
 
 import 'package:e_commerce_app/view/splash/splash.dart';
 import 'package:flutter/material.dart';

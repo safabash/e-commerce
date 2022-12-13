@@ -1,14 +1,15 @@
 import 'dart:developer';
 
+import 'package:e_commerce_app/model/carousal/carousal_get_model.dart';
 import 'package:e_commerce_app/model/category/category_product_model.dart';
 import 'package:e_commerce_app/model/home/home_category_model.dart';
 import 'package:e_commerce_app/model/home/home_product_model.dart';
+import 'package:e_commerce_app/service/carousal/carousal_get_service.dart';
 import 'package:e_commerce_app/service/category/category_products_service.dart';
 import 'package:e_commerce_app/service/home/category_home_services.dart';
 import 'package:e_commerce_app/view/category/category_product_view.dart';
 import 'package:flutter/material.dart';
 
-import '../../model/authentication/product_model.dart';
 import '../../service/home/product_home_service.dart';
 
 class HomeController with ChangeNotifier {
@@ -71,6 +72,22 @@ class HomeController with ChangeNotifier {
       }
     });
     log('end');
+    isLoading = false;
+    notifyListeners();
+  }
+
+  CarousalModel? carousal;
+  void getCarousal(context) async {
+    isLoading = true;
+    notifyListeners();
+    await CarousalGetService.carousalGetService(context).then((value) {
+      if (value != null) {
+        carousal = value;
+        isLoading = false;
+        notifyListeners();
+      }
+    });
+
     isLoading = false;
     notifyListeners();
   }

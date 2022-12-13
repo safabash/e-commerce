@@ -52,8 +52,12 @@ class ProductCard extends StatelessWidget {
                             padding: const EdgeInsets.only(left: 140),
                             child: Consumer<ScreenWishlistProvider>(
                               builder: (context, value, child) {
-                                return AddorRemoveFavoriteWidget(
-                                  productId: product![index].id.toString(),
+                                return Padding(
+                                  padding:
+                                      const EdgeInsets.only(right: 10, top: 10),
+                                  child: AddorRemoveFavoriteWidget(
+                                    productId: product![index].id.toString(),
+                                  ),
                                 );
                               },
                             ))

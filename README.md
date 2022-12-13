@@ -1,16 +1,3 @@
 # e_commerce_app
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+This is an ongoing e-commerce project which has included all the obvious functions including fetching products, categories,product details, address,cart and wishlist from API. Here the backend provided uses node framework and for API integration Dio package is used.State management is also maintained by using Provider package. Also MVC folder structure is used to organise the dart files.

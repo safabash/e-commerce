@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:e_commerce_app/model/address/address_post_model.dart';
 import 'package:e_commerce_app/service/address/post_address_service.dart';
-import 'package:e_commerce_app/view/delivery_address/delivery_address.dart';
+
 import 'package:flutter/material.dart';
 
 import '../../model/address/address_delete_model.dart';
@@ -17,6 +17,7 @@ class AddressController with ChangeNotifier {
   TextEditingController phoneController = TextEditingController();
   TextEditingController pincodeController = TextEditingController();
   final formKey = GlobalKey<FormState>();
+
   bool isLoading = false;
   Future<void> saveAddress(context, formKey) async {
     if (formKey.currentState!.validate()) {
@@ -27,9 +28,10 @@ class AddressController with ChangeNotifier {
           city: cityController.text,
           address: addressController.text);
       await AddressPostService.postAddress(user, context).then((value) {
-        if (value != null) {
-          Navigator.of(context).pop();
-        }
+        getAddressFn(context);
+        Navigator.of(context).pop();
+        notifyListeners();
+        disposeField();
       });
     }
   }
@@ -84,6 +86,7 @@ class AddressController with ChangeNotifier {
   }
 
   //delivery address
+
   List<AddressGetModel> address = [];
 
   int selectedType = 0;
@@ -115,7 +118,6 @@ class AddressController with ChangeNotifier {
     notifyListeners();
     await AddressDeleteService.deleteAddress(addressId, context).then((value) {
       if (value != null) {
-        log('not null');
         deleteAdd = value;
         notifyListeners();
         isLoading = false;
@@ -128,11 +130,6 @@ class AddressController with ChangeNotifier {
   }
 
   showDeleteAlert(BuildContext context, String? addressId) async {
-    // set up the buttons
-
-    // set up the AlertDialog
-
-    // show the dialog
     await showDialog(
       context: context,
       builder: (BuildContext ctx) {
@@ -150,10 +147,10 @@ class AddressController with ChangeNotifier {
               child: const Text("Delete"),
               onPressed: () {
                 deleteAddress(addressId, context);
-                notifyListeners();
                 getAddressFn(context);
-                notifyListeners();
+
                 Navigator.pop(ctx);
+                notifyListeners();
               },
             ),
           ],
